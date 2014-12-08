@@ -12,7 +12,6 @@ class NotesController < ApplicationController
 
   def create
 
-    # MISSING USER_ID WHEN USING API ENDPOINT -> 
     note = Note.new(note_params)
 
     respond_to do |format|
