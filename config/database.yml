@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: chromext_development
+  pool: 5
+  username: rails
+  password: rails
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: chromext_test
+  pool: 5
+  username:
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: chromext_production
+  pool: 5
+  username:
+  password:

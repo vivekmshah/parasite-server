@@ -1,0 +1,1 @@
+Chromext::Application.config.secret_key_base = '63ef43eb09a38962ed7a9068ab41f3969ced9d2421a25d7775424b869af0351e1e75e65489e52bba94418885e40ec6403bbf44dd78dda33c3a7e79723ab92c9e'
