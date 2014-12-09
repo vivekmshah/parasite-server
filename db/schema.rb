@@ -11,34 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208031517) do
+ActiveRecord::Schema.define(version: 20141208030302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "domains", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "links", force: true do |t|
-    t.string   "url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "domain_id"
-  end
-
   create_table "notes", force: true do |t|
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.integer  "link_id"
-  end
-
-  create_table "users", force: true do |t|
-    t.string   "username"
+    t.string   "description", limit: 1000
+    t.string   "domain"
+    t.string   "path",        limit: 300
     t.datetime "created_at"
     t.datetime "updated_at"
   end
