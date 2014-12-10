@@ -1,7 +1,12 @@
 class NotesController < ApplicationController
 
   def index
-    @notes = Note.all
+
+    if params[:domain]
+      @notes = Note.where(domain: params[:domain])
+    else
+      @notes = Note.all
+    end
     
     respond_to do |format|
       format.html {  }
