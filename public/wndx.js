@@ -3,7 +3,7 @@
 
 httpRequest = new XMLHttpRequest();
 // httpRequest.open('GET', '//fast-ocean-4567.herokuapp.com/api/notes?domain=' + domain, true);
-httpRequest.open('GET', '//localhost:3000/api/notes', true);
+httpRequest.open('GET', 'http://localhost:3000/api/notes', true);
 console.log("Hmmm...what's going on.");
 
 httpRequest.onreadystatechange = function(){
