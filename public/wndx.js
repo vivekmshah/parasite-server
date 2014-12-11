@@ -1,9 +1,9 @@
-// var domainName = document.domain;
-// var domain = domainName.replace('www.','');
+var domainName = document.domain;
+var domain = domainName.replace('www.','');
 
 httpRequest = new XMLHttpRequest();
-// httpRequest.open('GET', '//fast-ocean-4567.herokuapp.com/api/notes?domain=' + domain, true);
-httpRequest.open('GET', 'http://localhost:3000/api/notes', true);
+httpRequest.open('GET', '//fast-ocean-4567.herokuapp.com/api/notes?domain=' + domain, true);
+// httpRequest.open('GET', 'http://localhost:3000/api/notes', true);
 console.log("Hmmm...what's going on.");
 
 httpRequest.onreadystatechange = function(){
@@ -15,6 +15,15 @@ httpRequest.onreadystatechange = function(){
 };
 
 httpRequest.send();
+
+// TEMPLATE
+// <div class="postContainer">
+//   <p class="Post">
+//     <span class="userName">@alexhart:</span> 
+//     <span class="postBody">This is a four line post that I’m writing to check on this fonts legibility for body copy.</span>
+//   </p>
+//   <p class="commentsLink">44 Comments</p>
+// </div>
 
 function stylize(arr) {
   var out = "";
