@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
-
+  helper_method :current_user
   before_filter :add_allow_credentials_headers
 
   def add_allow_credentials_headers
@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
 
   def options
     head :status => 200, :'Access-Control-Allow-Headers' => 'accept, content-type'
+  end
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id] 
   end
 
 end

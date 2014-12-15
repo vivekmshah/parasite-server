@@ -33,7 +33,8 @@ def create
       if @user.save
         id = User.last[:id]
         redirect_to user_path(id)
-        # format.html {  }
+        
+        format.html {  }
         format.json { render json: @user, status: :created }
       else
         format.html {  }
