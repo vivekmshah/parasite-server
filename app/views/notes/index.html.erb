@@ -1,1 +1,9 @@
-NOTES INDEX
+<%@notes.each do |note|%>
+	<%= note.description%><br>
+<% end %>
+<% if current_user%>
+	<%= form_for(@note,{action: :create, controller: :notes}) do |f| %>
+          <%= f.text_field :description, :placeholder =>  "description"%>
+          <%= f.submit "submit"%>
+    <% end %>
+<% end%>

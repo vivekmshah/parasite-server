@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
 
   def index
-
+    @note = Note.new
     if params[:domain]
       @notes = Note.where(domain: params[:domain])
     else
