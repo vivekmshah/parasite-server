@@ -16,23 +16,28 @@ class NotesController < ApplicationController
   end
 
   def create
-
-    note = Note.new(note_params)
+    @note = Note.new(note_params)
 
     respond_to do |format|
-      if note.save
+      if @note.save
         format.html {  }
-        format.json { render json: note, status: :created }
+        format.json { render json: @note, status: :created }
       else
         format.html {  }
-        format.json { render json: note.errors, status: :unprocessable_entity }
+        format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
 
   end
 
+  def destroy
+    @note = Note.find(params[:id])
+    @note.destroy
+
+  end
+
   def note_params
-    params.require(:note).permit(:description, :domain, :path)
+    params.permit(:description, :domain, :path, :user_id)
   end
 
 
