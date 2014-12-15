@@ -1,9 +1,12 @@
 <%@notes.each do |note|%>
 	<%= note.description%><br>
 <% end %>
-<% if current_user%>
-	<%= form_for(@note,{action: :create, controller: :notes}) do |f| %>
-          <%= f.text_field :description, :placeholder =>  "description"%>
-          <%= f.submit "submit"%>
-    <% end %>
-<% end%>
+
+<% if current_user %>
+
+  <%= form_tag notes_path do %>
+    <%= text_field_tag :description %>
+    <%= submit_tag "submit" %>
+  <% end %>
+
+<% end %>

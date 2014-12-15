@@ -16,18 +16,13 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(note_params)
+    note = Note.new(note_params)
 
-    respond_to do |format|
-      if @note.save
-        format.html {  }
-        format.json { render json: @note, status: :created }
+      if note.save
+        redirect_to notes_path
       else
-        format.html {  }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
       end
-    end
-
+  
   end
 
   def destroy
