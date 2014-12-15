@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
 def new
+
 end
 
   def create
@@ -10,16 +11,16 @@ end
       if user && user.authenticate(params[:password])
           # sets the cookie to the browser
           session[:user_id] = user.id
-          redirect_to user_path(user.id)
+          redirect_to notes_path
       else
-          flash.now.alert = "Email or password is invalid"
+          # flash.now.alert = "Email or password is invalid"
           render "new"
           # redirect_to new_session_path
       end
   end
 
   def destroy
-      # Kill our cookies!
+      # Kill cookies!
       reset_session
       redirect_to login_path
   end
