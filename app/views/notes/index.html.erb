@@ -7,17 +7,222 @@
 
 <% end %>
 
-<% if current_user %>
+  <!-- Show sidebar button -->
+  <div id="show-button"><div id="button-circle"></div></div>
+  <div id="wndx-sidebar">
 
-  <%= form_tag notes_path do %>
-    <%= text_field_tag :description %>
-    <%= hidden_field_tag :domain %>
-    <%= hidden_field_tag :user_id, current_user.id %>
-    <%= submit_tag "submit" %>
-  <% end %>
+    <!-- Sidebar top nav bar -->
+    <div id="top-bar">
+      <div id="hide-button"><i class="fa fa-arrow-right">&nbsp; HIDE</i></div>
+      <div id='top-bar-buttons'>
+        <div id="login">LOGIN</div>
+        <div id="signup">SIGN UP</div>
+      </div>
+    </div>
 
-<% end %>
-<script type="text/javascript">
-var domainField = document.getElementById('domain');
-domainField.value = document.domain;
-</script>
+    <div id="logo"></div>
+
+  <!-- add post stuff -->
+
+    <div id="addPost"><i class="fa fa-plus"></i></div>
+    
+
+    <div id="add-post-container">
+      <textarea name="textarea" rows="10" cols="50" id="add-post-input" placeholder="Add your post here"></textarea>
+      <div id="submitPost"><i class="fa fa-plus"></i></div>
+      <div id="closePost"><i class="fa fa-times"></i></div>
+    </div>
+
+    
+  <!-- Big post container with userCC and commentCC inside -->
+    
+    <div id="postCC">
+
+
+  <!-- sessions panel -->
+
+
+    <div id="sessionCC">
+      <div id="hide-session-button"><i class="fa fa-arrow-right">&nbsp; CLOSE</i></div>
+
+      <div id="signupContainer">
+        <div id="signupHeader">Sign Up</div>
+        <input type="text" name="username" placeholder="Create username" class="usernameInput"><br>
+        <input type="password" name="password" placeholder="Create password" class="passwordInput">
+        <div id="signupSubmitButton"><span class='submit'>SUBMIT</span></div>
+      </div>
+
+      <div id="loginContainer">
+        <div id="loginHeader">Login</div>
+        <input type="text" name="username" placeholder="Username" class="usernameInput"><br>
+        <input type="password" name="password" placeholder="Password" class="passwordInput">
+        <div id="loginSubmitButton"><span class='submit'>SUBMIT</span></div>
+      </div>
+
+    </div>
+      
+
+
+
+  <!-- Comments panel -->
+
+      <div class='commentCC'>
+        <div class="postContainer-in-comments">
+          <div class="post">        
+            <span class="postBody-in-comments">This is a four line post that I'm writing to check on this fonts legibility for body copy. This is a four line post that I'm writing to check on this fonts legibility for body copy.</span>     
+            <div class="postMeta">
+              <span class="userName">@alexhart</span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date">12/16/14
+            </div>    
+          </div>
+        </div>
+        <div id="hide-comments-button"><i class="fa fa-arrow-right">&nbsp; HIDE COMMENTS</i></div>
+        <div class="hide-comments-vert-button"></div>
+        <div id='commentHeader'>44 Comments</div>
+
+  <!-- Repeated dumb comments -->
+
+        <div class='commentContainer'>
+          <span class="commentBody">This is a four line post that I'm writing to check on this fonts legibility for body copy. This is a four line post that I'm writing to check on this fonts legibility for body copy.</span>
+          <div class="postMeta">
+              <span class="userName">@alexhart</span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date">12/16/14
+          </span>
+          </div>
+        </div>
+        <div class='commentContainer'>
+          <span class="commentBody">This is a four line post that I'm writing to check on this fonts legibility for body copy. This is a four line post that I'm writing to check on this fonts legibility for body copy.</span>
+          <div class="postMeta">
+              <span class="userName">@alexhart</span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date">12/16/14
+          </span>
+          </div>
+        </div>
+        <div class='commentContainer'>
+          <span class="commentBody">This is a four line post that I'm writing to check on this fonts legibility for body copy. This is a four line post that I'm writing to check on this fonts legibility for body copy.</span>
+          <div class="postMeta">
+              <span class="userName">@alexhart</span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date">12/16/14
+          </span>
+          </div>
+        </div>
+
+      </div>
+
+  <!-- User panel with dumb content -->
+
+      <div class='userCC'>
+
+        <div id="hide-user-button"><i class="fa fa-arrow-right">&nbsp; HIDE USER</i></div>
+        <div class="hide-user-vert-button"></div>
+        <div class='userHeader'>Alex Hart</div>
+        <div class='commentContainer'>
+          <span class="commentBody">This is a four line post that I'm writing to check on this fonts legibility for body copy. This is a four line post that I'm writing to check on this fonts legibility for body copy.</span>
+          <div class="postMeta">
+              <span class="userName">@alexhart</span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date">12/16/14
+          </span>
+          </div>
+        </div>
+        <div class='commentContainer'>
+          <span class="commentBody">This is a four line post that I'm writing to check on this fonts legibility for body copy. This is a four line post that I'm writing to check on this fonts legibility for body copy.</span>
+          <div class="postMeta">
+              <span class="userName">@alexhart</span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date">12/16/14
+          </span>
+          </div>
+        </div>
+
+      </div>
+
+  <!-- Post panel stuff with dumb content -->
+
+      
+      <div class="postContainer">
+        <div class="post">        
+          <span class="postBody">This is a four line post that I'm writing to check on this fonts legibility for body copy. This is a four line post that I'm writing to check on this fonts legibility for body copy.</span>     
+          <div class="postMeta">
+            <span class="userName">@alexhart</span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date">12/16/14
+        </span> &nbsp;&nbsp;| &nbsp;&nbsp;<span class="commentsLink"><i class="fa fa-comment"></i>&nbsp;44</span></div>   
+        </div>
+      </div>
+
+      <div class="postContainer">
+        <div class="post">        
+          <span class="postBody">This is a four line post that I'm writing to check on this fonts legibility for body copy. This is a four line post that I'm writing to check on this fonts legibility for body copy.</span>     
+          <div class="postMeta">
+            <span class="userName">@alexhart</span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date">12/16/14
+        </span> &nbsp;&nbsp;| &nbsp;&nbsp;<span class="commentsLink"><i class="fa fa-comment"></i>&nbsp;44</span></div>   
+        </div>
+      </div>
+
+      <div class="postContainer">
+        <div class="post">        
+          <span class="postBody">This is a four line post that I'm writing to check on this fonts legibility for body copy. This is a four line post that I'm writing to check on this fonts legibility for body copy.</span>     
+          <div class="postMeta">
+            <span class="userName">@alexhart</span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date">12/16/14
+        </span> &nbsp;&nbsp;| &nbsp;&nbsp;<span class="commentsLink"><i class="fa fa-comment"></i>&nbsp;44</span></div>   
+        </div>
+      </div>
+
+      <div class="postContainer">
+        <div class="post">        
+          <span class="postBody">This is a four line post that I'm writing to check on this fonts legibility for body copy. This is a four line post that I'm writing to check on this fonts legibility for body copy.</span>     
+          <div class="postMeta">
+            <span class="userName">@alexhart</span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date">12/16/14
+        </span> &nbsp;&nbsp;| &nbsp;&nbsp;<span class="commentsLink"><i class="fa fa-comment"></i>&nbsp;44</span></div>   
+        </div>
+      </div>
+
+      <div class="postContainer">
+        <div class="post">        
+          <span class="postBody">This is a four line post that I'm writing to check on this fonts legibility for body copy. This is a four line post that I'm writing to check on this fonts legibility for body copy.</span>     
+          <div class="postMeta">
+            <span class="userName">@alexhart</span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date">12/16/14
+        </span> &nbsp;&nbsp;| &nbsp;&nbsp;<span class="commentsLink"><i class="fa fa-comment"></i>&nbsp;44</span></div>   
+        </div>
+      </div>
+
+      <div class="postContainer">
+        <div class="post">        
+          <span class="postBody">This is a four line post that I'm writing to check on this fonts legibility for body copy. This is a four line post that I'm writing to check on this fonts legibility for body copy.</span>     
+          <div class="postMeta">
+            <span class="userName">@alexhart</span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date">12/16/14
+        </span> &nbsp;&nbsp;| &nbsp;&nbsp;<span class="commentsLink"><i class="fa fa-comment"></i>&nbsp;44</span></div>   
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- Link stuff with dumb content -->
+
+    <div id="linkCC">
+      <div class="linkContainer">
+        <span class="link">1. This is a link to a story. </span>
+        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
+      </div>
+      <div class="linkContainer">
+        <span class="link">2. Another link to another story on this site. </span>
+        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
+      </div>
+      <div class="linkContainer">
+        <span class="link">3. This is just another story that I found. </span>
+        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
+      </div>
+      <div class="linkContainer">
+        <span class="link">4. This is a link to a story. </span>
+        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
+      </div>
+      <div class="linkContainer">
+        <span class="link">5. This is a link to a story. </span>
+        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
+      </div>
+      <div class="linkContainer">
+        <span class="link">6. Another link to another story on this site. </span>
+        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
+      </div>
+      <div class="linkContainer">
+        <span class="link">7. This is just another story that I found. </span>
+        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
+      </div>
+      <div class="linkContainer">
+        <span class="link">8. This is a link to a story. </span>
+        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
+      </div>
+
+    </div>
