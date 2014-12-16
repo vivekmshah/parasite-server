@@ -12,9 +12,11 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
 
   delete 'logout', to: 'sessions#destroy', as: 'logout'
-
+  root 'notes#index'
   resources :notes
   resources :users
+
+  resources :comments
 
   # match '*any' => 'application#options', :via => [:options]
 

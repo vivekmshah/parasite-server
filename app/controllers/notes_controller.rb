@@ -1,7 +1,8 @@
 class NotesController < ApplicationController
 
   def index
-
+    @user = User.all
+    @note = Note.new
     if params[:domain]
       @notes = Note.where(domain: params[:domain])
     else
@@ -15,19 +16,18 @@ class NotesController < ApplicationController
 
   end
 
+  def show
+    @note = Note.find(params[:id])
+  end
+
   def create
-    @note = Note.new(note_params)
+    note = Note.new(note_params)
 
-    respond_to do |format|
-      if @note.save
-        format.html {  }
-        format.json { render json: @note, status: :created }
+      if note.save
+        redirect_to notes_path
       else
-        format.html {  }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
       end
-    end
-
+  
   end
 
   def destroy
