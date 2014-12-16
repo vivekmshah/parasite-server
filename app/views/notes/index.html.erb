@@ -9,7 +9,7 @@
 
 <% if current_user %>
 
-  <%= form_tag notes_path do %>
+  <%= form_tag notes_path, remote: true do %>
     <%= text_field_tag :description %>
     <%= hidden_field_tag :domain %>
     <%= hidden_field_tag :user_id, current_user.id %>
@@ -17,7 +17,3 @@
   <% end %>
 
 <% end %>
-<script type="text/javascript">
-var domainField = document.getElementById('domain');
-domainField.value = document.domain;
-</script>
