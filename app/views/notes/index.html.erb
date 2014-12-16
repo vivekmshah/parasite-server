@@ -11,8 +11,13 @@
 
   <%= form_tag notes_path do %>
     <%= text_field_tag :description %>
+    <%= hidden_field_tag :domain %>
     <%= hidden_field_tag :user_id, current_user.id %>
     <%= submit_tag "submit" %>
   <% end %>
 
 <% end %>
+<script type="text/javascript">
+var domainField = document.getElementById('domain');
+domainField.value = document.domain;
+</script>
