@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :notes
   resources :users
 
+  resources :comments
+
   # match '*any' => 'application#options', :via => [:options]
 
 end
