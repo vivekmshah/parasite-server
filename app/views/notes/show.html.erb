@@ -1,14 +1,14 @@
-<%= @note.description %><br>
+<%= @note.description %><br><br>
 
 
 <% @note.comments.each do |comment|%>
- 	<%= comment.description %>
+ 	<p><%= comment.description %></p>
 <% end %>
 
 <% if current_user %>
 
   <%= form_tag comments_path do %>
-    <%= text_field_tag :description %>
+    <%= text_field_tag :description%>
     <%= hidden_field_tag :user_id, current_user.id %>
     <%= hidden_field_tag :note_id, @note.id %>
     <%= submit_tag "submit" %>

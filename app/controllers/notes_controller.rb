@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
 
   def index
+    @user = User.all
     @note = Note.new
     if params[:domain]
       @notes = Note.where(domain: params[:domain])

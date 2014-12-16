@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @notes = Note.all
+    @comments = Comment.all
   end
 
   def edit
