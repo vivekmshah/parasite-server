@@ -1,12 +1,18 @@
 class NotesController < ApplicationController
 
-  def index
-    # @user = User.all
+    def index
     if params[:domain]
-      @notes = Note.where(domain: params[:domain])
+      @notes = Note.find_by_sql([
+      'SELECT notes.id, notes.user_id, notes.description, notes.domain, notes.created_at, users.username ' +
+      'FROM notes ' +
+      'INNER JOIN users ' +
+      'ON notes.user_id = users.id '+
+      'WHERE notes.domain = ?',
+      "#{params[:domain]}"
+      ])
     else
       @notes = Note.find_by_sql([
-      'SELECT notes.id, notes.user_id, notes.description, notes.created_at, users.username ' +
+      'SELECT notes.id, notes.user_id, notes.description, notes.domain, notes.created_at, users.username ' +
       'FROM notes ' +
       'INNER JOIN users ' +
       'ON notes.user_id = users.id '
