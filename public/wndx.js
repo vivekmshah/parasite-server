@@ -2,7 +2,7 @@ $( document ).ready(function() {
 
   $('#add-post-container').toggle();
 
-  $('#hide-button').click(function() {
+  $(document).on('click', '#hide-button', function() {
     $('#wndx-sidebar').css("right", "-400px");
     $('#show-button').css("right", "-20px");
     $('.commentCC').css("right", "-380px");
@@ -15,7 +15,7 @@ $( document ).ready(function() {
     $('#show-button').css("right", "-100px");
   });
 
-  $('#addPost').click(function() {
+  $(document).on('click', '#addPost', function() {
     $('#postCC').css("margin-top", "280px");
     $('#addPost').css("opacity", "0");
     $('#addPost').toggle();
@@ -24,7 +24,7 @@ $( document ).ready(function() {
       $('#add-post-input').css("height", "80px");
   });
 
-  $('#submitPost').click(function() {
+  $(document).on('click', '#submitPost', function() {
     $('#postCC').css("margin-top", "90px");
     $('#addPost').css("opacity", "1");
     $('#add-post-container').toggle();
@@ -32,7 +32,7 @@ $( document ).ready(function() {
     $('#add-post-input').css("height", "0px");
   });
 
-  $('#closePost').click(function() {
+  $(document).on('click', '#closePost', function() {
     $('#postCC').css("margin-top", "90px");
     $('#addPost').css("opacity", "1");
     $('#addPost').toggle();
@@ -41,53 +41,55 @@ $( document ).ready(function() {
     $('#add-post-input').css("height", "0px");
   });
 
-  $('.commentsLink').click(function() {
+  $(document).on('click', '.commentsLink', function() {
     $('.commentCC').css("right", "-10px");
     $('.hide-comments-vert-button').css("right", "370px");
   });
 
-  $('#hide-comments-button').click(function() {
+  $(document).on('click', '#hide-comments-button', function() {
     $('.commentCC').css("right", "-380px");
     $('.hide-comments-vert-button').css("right", "0px");
   });
 
-  $('.hide-comments-vert-button').click(function() {
+  $(document).on('click', '.hide-comments-vert-button', function() {
     $('.commentCC').css("right", "-380px");
     $('.hide-comments-vert-button').css("right", "0px");
   });
 
-  $('.hide-comments-vert-button').mouseover(function() {
+  $(document).on('mouseover', '.hide-comments-vert-button', function() {
     $('.commentCC').css("border-left", "1px solid rgba(255,255,255,.8)");
   });
 
-  $('.hide-comments-vert-button').mouseout(function() {
+  $(document).on('mouseout', '.hide-comments-vert-button', function() {
     $('.commentCC').css("border-left", "1px solid rgba(255,255,255,.1)");
 
   });
 
-  $('.userName').click(function() {
+  $(document).on('click', '.userName', function() {
     $('.userCC').css("right", "-10px");
   });
 
-  $('#hide-user-button').click(function() {
+  // $(document).on('click', '#hide-user-button',function() {
+  // $('#hide-user-button').click(function() {
+  $(document).on('click', '#hide-user-button', function() {
     $('.userCC').css("right", "-380px");
     $('.hide-user-vert-button').css("right", "0px");
   });
 
-  $('#login').click(function() {
+  $(document).on('click', '#login', function() {
     $('#sessionCC').css("right", "-10px");
       $('#login').toggle();
     $('#signup').toggle();
 
   });
 
-  $('#signup').click(function() {
+  $(document).on('click', '#signup', function() {
     $('#sessionCC').css("right", "-10px");
       $('#login').toggle();
     $('#signup').toggle();
   });
 
-  $('#hide-session-button').click(function() {
+  $(document).on('click', '#hide-session-button', function() {
     $('#sessionCC').css("right", "-380px");
     $('#login').toggle();
     $('#signup').toggle();
