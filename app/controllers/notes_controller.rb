@@ -1,14 +1,21 @@
 class NotesController < ApplicationController
 
   def index
-    @user = User.all
-    @note = Note.new
+    # @user = User.all
     if params[:domain]
       @notes = Note.where(domain: params[:domain])
     else
-      @notes = Note.all
+      @notes = Note.find_by_sql([
+      'SELECT notes.id, notes.user_id, notes.description, notes.created_at, users.username ' +
+      'FROM notes ' +
+      'INNER JOIN users ' +
+      'ON notes.user_id = users.id '
+      ])
     end
     
+
+
+
     respond_to do |format|
       format.html {  }
       format.json { render json: @notes, status: :ok }

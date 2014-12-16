@@ -1,21 +1,17 @@
 <br>
-<%@notes.each do |note|%>
+<% @notes.each do |note|%>
 	<span><%= link_to "#{note.description}", note_path(note) %></span><br>
-	<% @user.each do |user|%>
-		<% if user.id == note.user_id%>
-			<%=link_to user.username, user_path(user)%> | <%= note.created_at.strftime("%m/%d/%Y")%> | 
-			<% if link_to note.comments.count==1%>
-				<%=link_to note.comments.count, note_path(note)%><br><br>
-			<% end %>
-		<% end %>
-	<% end %>
+
+	<%=link_to "#{note.username}", user_path(note.user_id)%> | <%= note.created_at.strftime("%m/%d/%Y")%> | 
+	<%=link_to note.comments.count, note_path(note) %><br><br>
+
 <% end %>
 
 <% if current_user %>
 
   <%= form_tag notes_path do %>
     <%= text_field_tag :description %>
-    <%= hidden_field_tag :user_id, current_user.id%>
+    <%= hidden_field_tag :user_id, current_user.id %>
     <%= submit_tag "submit" %>
   <% end %>
 
