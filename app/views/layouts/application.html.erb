@@ -13,7 +13,7 @@
     <% if current_user %>
       <%= link_to 'Sign Out', logout_path, method: :delete %>
 
-      <p>Welcome, <%=current_user.username %>!</p> 
+      <%=link_to current_user.username, user_path(current_user.id)%> 
 
 
       <!-- link_to 'Delete Account', user_path(current_user), {method: :delete, confirm: "Are you really really really sure bud?"} -->
