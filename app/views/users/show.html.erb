@@ -1,6 +1,6 @@
 <%= @user.username %><br>
 	<% @notes.each do |note|%>
-		<% if note.user_id = @user.id %>
+		<% if note.user_id == @user.id %>
 			<p><%= link_to note.description, note_path(note)%></p>
 		<% end %>
 	<% end %>
