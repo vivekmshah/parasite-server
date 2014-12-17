@@ -1,5 +1,4 @@
 <!-- Post panel stuff with dumb content -->
-
 <div class="postContainer">
   <div class="post">        
     <span rel='<%="#{note.id}"%>' class="postBody"><%= note.description %></span>     
@@ -65,14 +64,14 @@
 
   <div rel='<%="#{note.id}"%>' class="comments-body-container">
   
-    <div id='commentHeader'><%= note.comments.count %> Comments</div>
+    <div rel='<%="#{note.id}"%>' class='commentHeader'><%= note.comments.count %> Comments</div>
 
     <!-- Repeated dumb comments -->
 
     <% @postComments = Comment.where(note_id: note.id) %>    
     <% @postComments.each do |comment|%>
 
-    <div class='commentContainer'>
+    <div rel='<%="#{note.id}"%>' class='commentContainer'>
       <span class="commentBody"><%= comment.description %></span>
       <div class="postMeta">
         <span class="userName">@<%= User.find(comment.user_id).username %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= comment.created_at.strftime("%m/%d/%Y")%>

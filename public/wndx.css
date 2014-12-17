@@ -474,7 +474,7 @@ color: rgba(0,0,0,.6);
   border-left: 1px solid rgba(255,255,255,.1);
 }
 
-#commentHeader{
+.commentHeader{
   margin-top: 20px;
   margin-bottom: 20px;
   font-family: 'Open Sans';

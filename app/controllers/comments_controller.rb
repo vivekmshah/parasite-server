@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
 
+def show
+    @comment = Comment.get_multi(nil, params[:id]).first
+end
+
 def create
     comment = Comment.new(comment_params)
 

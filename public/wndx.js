@@ -122,8 +122,8 @@ $(document).on('click', '.submitComment', function () {
         dataType: "JSON",
         success: function (data) {
             console.log(data);
-
-            // $('#postCC').prepend(data.info);
+            console.log(data.info);
+            $('#postCC').prepend(data.info);
         },
         error: function (xhr, status) {
             console.log(status);
