@@ -8,11 +8,14 @@ $( document ).ready(function() {
     $('.commentCC').css("right", "-380px");
     $('.userCC').css("right", "-380px");
     $('#sessionCC').css("right", "-380px");
+    $('#top-bar').css("right", "-380px");
+
   });
 
   $('#show-button').click(function() {
     $('#wndx-sidebar').css("right", "0px");
     $('#show-button').css("right", "-100px");
+    $('#top-bar').css("right", "0px");
   });
 
   $(document).on('click', '#addPost', function() {
@@ -41,8 +44,17 @@ $( document ).ready(function() {
     $('#add-post-input').css("height", "0px");
   });
 
-  $(document).on('click', '.commentsLink', function() {
-    $('.commentCC').css("right", "-10px");
+  $(document).on('click', 'span.commentsLink', function() {
+
+    // $('span').rel==$('div').rel ? 
+    // $('.commentCC').css("right", "-10px") : console.log('thefuck?');
+    // $('.commentCC').css("right", "-10px");
+    // $('.hide-comments-vert-button').css("right", "370px");
+
+    var keepItRel = $(this).attr('rel');
+    console.log($('.commentCC[rel='+keepItRel+']'));
+    
+    $('.commentCC[rel='+keepItRel+']').css("right", "-10px");
     $('.hide-comments-vert-button').css("right", "370px");
   });
 
@@ -68,6 +80,11 @@ $( document ).ready(function() {
   $(document).on('click', '.userName', function() {
     $('.userCC').css("right", "-10px");
   });
+
+   // + ' ' + '#' + userId
+
+   // $('span').rel==$('div').rel ? 
+  // $('.userCC').css("right", "-10px") : console.log('thefuck?');
 
   // $(document).on('click', '#hide-user-button',function() {
   // $('#hide-user-button').click(function() {

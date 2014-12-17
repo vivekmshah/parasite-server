@@ -89,12 +89,13 @@ z-index: 999999;
 #top-bar{
   height: 20px;
   width: 380px;
-  right: 0px;
+  right: -380px;
   top: 0px;
   background: #109b9e;
   position: fixed;
   text-align: right;
   z-index: 500;
+  transition: all 500ms cubic-bezier(.52,.02,.52,.99);
 
 }
 
@@ -577,7 +578,6 @@ color: rgba(0,0,0,.6);
 
   padding-right: 40px;
 }
-
 
 .usernameInput{
   margin-bottom: 10px;

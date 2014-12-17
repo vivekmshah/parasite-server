@@ -29,9 +29,7 @@
     
     <div id="postCC">
 
-
   <!-- sessions panel -->
-
 
     <div id="sessionCC">
       <div id="hide-session-button"><i class="fa fa-arrow-right">&nbsp; CLOSE</i></div>
@@ -51,7 +49,6 @@
       </div>
 
     </div>
-      
 
 <% @notes.each do |note|%>
 
@@ -61,14 +58,14 @@
         <div class="post">        
           <span class="postBody"><%= note.description %></span>     
           <div class="postMeta">
-            <span class="userName">@<%= note.username %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= note.created_at.strftime("%m/%d/%Y")%>
-        </span> &nbsp;&nbsp;| &nbsp;&nbsp;<span class="commentsLink"><i class="fa fa-comment"></i>&nbsp;<%= note.comments.count %></span></div>   
+            <span rel='<%="#{note.user_id}"%>' class="userName">@<%= note.username %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= note.created_at.strftime("%m/%d/%Y")%>
+        </span> &nbsp;&nbsp;| &nbsp;&nbsp;<span rel='<%="#{note.id}"%>' class="commentsLink"><i class="fa fa-comment"></i>&nbsp;<%= note.comments.count %></span></div>   
         </div>
       </div>
 
   <!-- User panel with dumb content -->
 
-      <div class='userCC'>
+      <div rel='<%="#{note.user_id}"%>' class='userCC'>
         <div id="hide-user-button"><i class="fa fa-arrow-right">&nbsp; HIDE USER</i></div>
         <div class="hide-user-vert-button"></div>
         <div class='userHeader'><%= note.username %></div>
@@ -90,7 +87,7 @@
 
  <!-- Comments panel -->
 
-      <div class='commentCC'>
+      <div rel='<%="#{note.id}"%>' class='commentCC'>
         
         <div class="postContainer-in-comments">
           <div class="post">        
@@ -160,3 +157,5 @@
       </div>
 
     </div>
+
+</div>
