@@ -1,12 +1,40 @@
 <h1>Signup</h1>
 
-<%= form_tag signup_path do %>
 
 <%= text_field_tag :username %> <br>
 
 <%= password_field_tag :password %> <br>
 <%= password_field_tag :password_confirmation %> <br>
 
-<%= submit_tag "Create Account" %>
+<div class="actions"><a id="wndx-createaccount">Create Account</a></div>
 
-<%end%>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+  	$('#wndx-createaccount').click(function() {
+  						console.log('hello?');
+  	var AUTH_TOKEN = $('meta[name="csrf-token"]').attr('content');
+  	$.ajaxSetup({
+    		beforeSend: function(xhr) {
+      	xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+    		}
+  		}); 
+
+    $.ajax({
+        type: "POST", 
+        url: "/signup?&authenticity_token="+encodeURIComponent(AUTH_TOKEN), 
+        data:{ utf:"✓", username : $('#username').val() , password : $('#password').val(), password_confirmation : $('#password_confirmation').val(),commit: "submit" },
+        dataType: "HTML",
+        success:function(data) {
+              console.log(data);
+              // window.location = data.redirect_url;
+          },
+          error: function(xhr, status) {
+              console.log(status);
+          }
+        });
+
+    return false;
+  });	
+});
+</script>

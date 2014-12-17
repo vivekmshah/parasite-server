@@ -2,21 +2,20 @@
 <html>
 <head>
   <title>Chromext</title>
-  <%= csrf_meta_tags %>
-  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <link href='//fast-ocean-4567.herokuapp.com/wndx.css' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700' rel='stylesheet' type='text/css'>
+  <link href="/wndx.css" rel="stylesheet" type="text/css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="/wndx.js"></script>
+  <%= csrf_meta_tags %>
 </head>
 <body>
+	
 
 <%= yield %>
 
 
-<script src='//fast-ocean-4567.herokuapp.com/wndx.js'></script>
-
 </body>
-
 </html>

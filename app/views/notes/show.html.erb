@@ -2,16 +2,46 @@
 
 
 <% @note.comments.each do |comment|%>
- 	<p><%= comment.description %></p>
+  <p><%= comment.description %></p>
 <% end %>
 
 <% if current_user %>
 
-  <%= form_tag comments_path do %>
+  
     <%= text_field_tag :description%>
     <%= hidden_field_tag :user_id, current_user.id %>
     <%= hidden_field_tag :note_id, @note.id %>
-    <%= submit_tag "submit" %>
-  <% end %>
+    <div class="actions"><a id="wndx-addcomment">Add Comment</a></div>
+
 
 <% end %>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#wndx-addcomment').click(function() {
+      
+            console.log('hello?');
+  
+            $.ajaxSetup({
+      beforeSend: function(xhr) {
+      xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+      }
+    }); 
+
+  $.ajax({
+      type: "POST", 
+      url: "/comments/", 
+      data:{ utf:"✓", description : $('#description').val() , user_id : $('#user_id').val(), note_id : $('#note_id').val(), commit: "submit" },
+      dataType: "HTML",
+      success:function(data) {
+            console.log(data);
+            // window.location = data.redirect_url;
+        },
+        error: function(xhr, status) {
+            console.log(status);
+        }
+      });
+
+  return false;
+  });
+}); 
+</script>

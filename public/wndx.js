@@ -3,7 +3,7 @@ $( document ).ready(function() {
   $('#add-post-container').toggle();
 
   $(document).on('click', '#hide-button', function() {
-    $('#wndx-sidebar').css("right", "-400px");
+    $('#wndx-sidebar').css("right", "-410px");
     $('#show-button').css("right", "-20px");
     $('.commentCC').css("right", "-380px");
     $('.userCC').css("right", "-380px");
@@ -14,36 +14,36 @@ $( document ).ready(function() {
 
 
 
-  // $(document).on('click', '#loginSubmitButton', function() {
+  $(document).on('click', '#loginSubmitButton', function() {
 
-  //     // Ajax called for authentication
-  //    console.log('hello?');
-  //     var AUTH_TOKEN = $('meta[name="csrf-token"]').attr('content');
-  //     $.ajaxSetup({
-  //         beforeSend: function (xhr) {
-  //             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-  //         }
-  //     });
+      // Ajax called for authentication
+     console.log('hello?');
+      var AUTH_TOKEN = $('meta[name="csrf-token"]').attr('content');
+      $.ajaxSetup({
+          beforeSend: function (xhr) {
+              xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+          }
+      });
 
-  //     $.ajax({
-  //         type: "POST",
-  //         url: "//fast-ocean-4567.herokuapp.com/login?&authenticity_token=" + encodeURIComponent(AUTH_TOKEN),
-  //         data: {
-  //             username: $('#username').val(),
-  //             password: $('#password').val()
-  //         },
-  //         dataType: "HTML",
-  //         success: function (data) {
-  //             console.log(data);
-  //             // window.location = data.redirect_url;
-  //         },
-  //         error: function (xhr, status) {
-  //             console.log(status);
-  //         }
-  //     });
+      $.ajax({
+          type: "POST",
+          url: "/login?&authenticity_token=" + encodeURIComponent(AUTH_TOKEN),
+          data: {
+              username: $('#username').val(),
+              password: $('#password').val()
+          },
+          dataType: "HTML",
+          success: function (data) {
+              console.log(data);
+              // window.location = data.redirect_url;
+          },
+          error: function (xhr, status) {
+              console.log(status);
+          }
+      });
 
-  //     return false;
-  // });
+      return false;
+  });
 
 
 
@@ -69,7 +69,7 @@ $(document).on('click', '#submitPost', function () {
 
     $.ajax({
         type: "POST",
-        url: "//fast-ocean-4567.herokuapp.com/notes?&authenticity_token=" + encodeURIComponent(AUTH_TOKEN),
+        url: "/notes?&authenticity_token=" + encodeURIComponent(AUTH_TOKEN),
         data: {
             utf: "✓",
             description: $('#add-post-input').val(),
@@ -80,7 +80,9 @@ $(document).on('click', '#submitPost', function () {
         dataType: "JSON",
         success: function (data) {
             console.log(data);
-            // window.location = data.redirect_url;
+
+
+            
         },
         error: function (xhr, status) {
             console.log(status);
