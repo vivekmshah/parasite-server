@@ -69,9 +69,10 @@ $(document).on('click', '#submitPost', function () {
 
     $.ajax({
         type: "POST",
-        url: "/notes?&authenticity_token=" + encodeURIComponent(AUTH_TOKEN),
+        url: "/notes",
         data: {
             utf: "✓",
+            authenticity_token: encodeURIComponent(AUTH_TOKEN),
             description: $('#add-post-input').val(),
             domain: $('#domain').val(),
             user_id: $('#user_id').val(),
