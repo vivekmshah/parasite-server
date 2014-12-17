@@ -77,7 +77,7 @@ $(document).on('click', '#submitPost', function () {
             user_id: $('#user_id').val(),
             commit: "submit"
         },
-        dataType: "HTML",
+        dataType: "JSON",
         success: function (data) {
             console.log(data);
             // window.location = data.redirect_url;
@@ -89,6 +89,11 @@ $(document).on('click', '#submitPost', function () {
 
     return false;
 });
+
+
+
+
+
   $('#show-button').click(function() {
     $('#wndx-sidebar').css("right", "0px");
     $('#show-button').css("right", "-100px");
