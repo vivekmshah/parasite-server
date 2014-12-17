@@ -49,11 +49,14 @@ $( document ).ready(function() {
 
  $(document).on('click', '#logout', function() {
 
-      // Ajax called for authentication
+      // Ajax call for authentication
      console.log('this is where we will put code to log out?');
 
   });
 
+
+
+// Ajax call for creating a post
 $(document).on('click', '#submitPost', function () {
 
     console.log('hello?');

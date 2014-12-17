@@ -27,7 +27,7 @@
     <div id="add-post-container">
       <textarea name="textarea" rows="10" cols="50" id="add-post-input" placeholder="Add your post here"></textarea>
       <textarea id="domain" style="display:none;"></textarea>
-      <textarea id="user_id" style="display:none;" value="<%=current_user.id%>"></textarea>
+      <textarea id="user_id" style="display:none;" ><%=current_user.id%></textarea>
       <div id="submitPost"><i class="fa fa-plus"></i></div>
       <div id="closePost"><i class="fa fa-times"></i></div>
     </div>
@@ -58,6 +58,11 @@
       </div>
 
     </div>
+
+
+
+
+
 
 <% @notes.each do |note|%>
 
@@ -106,14 +111,15 @@
             </div>    
           </div>
         </div>
+
         <div id="hide-comments-button"><i class="fa fa-arrow-right">&nbsp; HIDE COMMENTS</i></div>
         <div class="hide-comments-vert-button"></div>
         <div id='commentHeader'><%= note.comments.count %></div>
 
+  <!-- Repeated dumb comments -->
+
     <% @postComments = Comment.where(note_id: note.id) %>    
     <% @postComments.each do |comment|%>
-
-  <!-- Repeated dumb comments -->
 
         <div class='commentContainer'>
           <span class="commentBody"><%= comment.description %></span>
@@ -123,15 +129,23 @@
           </div>
         </div>
 
-      </div>
-
     <% end %>
 
+
+    </div>
+
 <% end %>
+
+</div>
+
+
+
+
       
-    <!-- Link stuff with dumb content -->
+    <!-- Link stuff with dumb content
 
     <div id="linkCC">
+
       <div class="linkContainer">
         <span class="link">1. This is a link to a story. </span>
         <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
@@ -167,4 +181,6 @@
 
     </div>
 
-</div>
+    -->
+
+
