@@ -106,7 +106,7 @@ z-index: 999999;
 
 
 
-#login{
+#logout,#login{
   height: 20px;
   padding-left: 10px;
   padding-right: 10px;
@@ -121,7 +121,7 @@ z-index: 999999;
   font-weight: 300;
   cursor: pointer;
 }
-#login:hover{
+#logout:hover,#login:hover{
   background: rgba(0,0,0,.4)
 }
 

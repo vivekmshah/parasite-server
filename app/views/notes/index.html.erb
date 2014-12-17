@@ -5,25 +5,34 @@
     <!-- Sidebar top nav bar -->
     <div id="top-bar">
       <div id="hide-button"><i class="fa fa-arrow-right">&nbsp; HIDE</i></div>
+
       <div id='top-bar-buttons'>
+      <% if !current_user %>
         <div id="login">LOGIN</div>
         <div id="signup">SIGN UP</div>
+      <% else %>
+        <div id="logout">LOG OUT</div>
+      <% end %>
       </div>
+
     </div>
 
     <div id="logo"></div>
 
   <!-- add post stuff -->
+<% if current_user %>
 
-    <div id="addPost"><i class="fa fa-plus"></i></div>
-    
+    <div id="addPost"><i class="fa fa-plus"></i></div>    
 
     <div id="add-post-container">
       <textarea name="textarea" rows="10" cols="50" id="add-post-input" placeholder="Add your post here"></textarea>
+      <textarea id="domain" style="display:none;"></textarea>
+      <textarea id="user_id" style="display:none;" value="<%=current_user.id%>"></textarea>
       <div id="submitPost"><i class="fa fa-plus"></i></div>
       <div id="closePost"><i class="fa fa-times"></i></div>
     </div>
 
+<% end %>
     
   <!-- Big post container with userCC and commentCC inside -->
     
@@ -36,15 +45,15 @@
 
       <div id="signupContainer">
         <div id="signupHeader">Sign Up</div>
-        <input type="text" name="username" placeholder="Create username" class="usernameInput"><br>
-        <input type="password" name="password" placeholder="Create password" class="passwordInput">
+        <input type="text" id="usernameSU" placeholder="Create username" class="usernameInput"><br>
+        <input type="password" id="passwordSU" placeholder="Create password" class="passwordInput">
         <div id="signupSubmitButton"><span class='submit'>SUBMIT</span></div>
       </div>
 
       <div id="loginContainer">
         <div id="loginHeader">Login</div>
-        <input type="text" name="username" placeholder="Username" class="usernameInput"><br>
-        <input type="password" name="password" placeholder="Password" class="passwordInput">
+        <input type="text" id="username" placeholder="Username" class="usernameInput"><br>
+        <input type="password" id="password" placeholder="Password" class="passwordInput">
         <div id="loginSubmitButton"><span class='submit'>SUBMIT</span></div>
       </div>
 

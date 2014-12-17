@@ -9,9 +9,83 @@ $( document ).ready(function() {
     $('.userCC').css("right", "-380px");
     $('#sessionCC').css("right", "-380px");
     $('#top-bar').css("right", "-380px");
+  });
+
+
+
+
+  $(document).on('click', '#loginSubmitButton', function() {
+
+      // Ajax called for authentication
+     console.log('hello?');
+      var AUTH_TOKEN = $('meta[name="csrf-token"]').attr('content');
+      $.ajaxSetup({
+          beforeSend: function (xhr) {
+              xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+          }
+      });
+
+      $.ajax({
+          type: "POST",
+          url: "/login?&authenticity_token=" + encodeURIComponent(AUTH_TOKEN),
+          data: {
+              username: $('#username').val(),
+              password: $('#password').val()
+          },
+          dataType: "HTML",
+          success: function (data) {
+              console.log(data);
+              // window.location = data.redirect_url;
+          },
+          error: function (xhr, status) {
+              console.log(status);
+          }
+      });
+
+      return false;
+  });
+
+
+
+ $(document).on('click', '#logout', function() {
+
+      // Ajax called for authentication
+     console.log('this is where we will put code to log out?');
 
   });
 
+$(document).on('click', '#submitPost', function () {
+
+    console.log('hello?');
+    var AUTH_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $.ajaxSetup({
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/notes?&authenticity_token=" + encodeURIComponent(AUTH_TOKEN),
+        data: {
+            utf: "✓",
+            description: $('#add-post-input').val(),
+            domain: $('#domain').val(),
+            user_id: $('#user_id').val(),
+            commit: "submit"
+        },
+        dataType: "HTML",
+        success: function (data) {
+            console.log(data);
+            // window.location = data.redirect_url;
+        },
+        error: function (xhr, status) {
+            console.log(status);
+        }
+    });
+
+    return false;
+});
   $('#show-button').click(function() {
     $('#wndx-sidebar').css("right", "0px");
     $('#show-button').css("right", "-100px");
@@ -44,16 +118,11 @@ $( document ).ready(function() {
     $('#add-post-input').css("height", "0px");
   });
 
-  $(document).on('click', 'span.commentsLink', function() {
-
-    // $('span').rel==$('div').rel ? 
-    // $('.commentCC').css("right", "-10px") : console.log('thefuck?');
-    // $('.commentCC').css("right", "-10px");
-    // $('.hide-comments-vert-button').css("right", "370px");
+  $(document).on('click', '.commentsLink', function() {
 
     var keepItRel = $(this).attr('rel');
     console.log($('.commentCC[rel='+keepItRel+']'));
-    
+
     $('.commentCC[rel='+keepItRel+']').css("right", "-10px");
     $('.hide-comments-vert-button').css("right", "370px");
   });
@@ -78,16 +147,14 @@ $( document ).ready(function() {
   });
 
   $(document).on('click', '.userName', function() {
-    $('.userCC').css("right", "-10px");
+
+    var keepItRel = $(this).attr('rel');
+    console.log($('.userCC[rel='+keepItRel+']'));
+
+    $('.userCC[rel='+keepItRel+']').css("right", "-10px");
+
   });
 
-   // + ' ' + '#' + userId
-
-   // $('span').rel==$('div').rel ? 
-  // $('.userCC').css("right", "-10px") : console.log('thefuck?');
-
-  // $(document).on('click', '#hide-user-button',function() {
-  // $('#hide-user-button').click(function() {
   $(document).on('click', '#hide-user-button', function() {
     $('.userCC').css("right", "-380px");
     $('.hide-user-vert-button').css("right", "0px");

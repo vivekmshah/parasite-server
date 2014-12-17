@@ -1,6 +1,8 @@
 class NotesController < ApplicationController
 
     def index
+
+
     if params[:domain]
       @notes = Note.find_by_sql([
       'SELECT notes.id, notes.user_id, notes.description, notes.domain, notes.created_at, users.username ' +
@@ -19,15 +21,17 @@ class NotesController < ApplicationController
       ])
     end
     
-
-
-
-    respond_to do |format|
-      format.html {  }
-      format.json { render json: @notes, status: :ok }
-    end
+    # respond_to do |format|
+    #   format.html {  }
+    #   format.json { render json: @notes, status: :ok }
+    # end
 
   end
+
+
+
+
+
 
   def show
     @note = Note.find(params[:id])
