@@ -27,7 +27,7 @@ $( document ).ready(function() {
 
       $.ajax({
           type: "POST",
-          url: "/login?&authenticity_token=" + encodeURIComponent(AUTH_TOKEN),
+          url: "//fast-ocean-4567.herokuapp.com/login?&authenticity_token=" + encodeURIComponent(AUTH_TOKEN),
           data: {
               username: $('#username').val(),
               password: $('#password').val()
@@ -69,7 +69,7 @@ $(document).on('click', '#submitPost', function () {
 
     $.ajax({
         type: "POST",
-        url: "/notes?&authenticity_token=" + encodeURIComponent(AUTH_TOKEN),
+        url: "//fast-ocean-4567.herokuapp.com/notes?&authenticity_token=" + encodeURIComponent(AUTH_TOKEN),
         data: {
             utf: "✓",
             description: $('#add-post-input').val(),
