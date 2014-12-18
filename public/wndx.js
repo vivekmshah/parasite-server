@@ -113,7 +113,8 @@ $(document).on('click', '#submitPost', function () {
             utf: "✓",
             authenticity_token: encodeURIComponent(AUTH_TOKEN),
             description: $('#add-post-input').val(),
-            domain: document.referrer,
+            domain: window.hostname,
+            path: window.pathname,
             user_id: $('#user_id').val(),
             commit: "submit"
         },

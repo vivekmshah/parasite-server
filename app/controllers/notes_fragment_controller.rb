@@ -1,3 +1,5 @@
+# require 'uri'
+
 class NotesFragmentController < FragmentController
 
   helper_method :current_user
@@ -7,6 +9,10 @@ class NotesFragmentController < FragmentController
 	end
 
   def create
+
+    # full_url = params[:domain]
+    # note = Note.new(params[:user_id], params[:description], )
+
     note = Note.new(note_params)
 
     if note.save
