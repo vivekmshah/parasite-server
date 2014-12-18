@@ -41,7 +41,7 @@ $( document ).ready(function() {
               $('#signup').css('display', 'none');
               $('#logout').css('display', 'block');
               console.log(data.user_id);
-              $('#user_id').html(data.user_id);
+              $('#user_id').html(JSON.parse(data).user_id);
           },
           error: function (xhr, status) {
               console.log(status);
