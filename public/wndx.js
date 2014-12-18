@@ -36,7 +36,9 @@ $( document ).ready(function() {
           dataType: "HTML",
           success: function (data) {
               console.log(data);
-              // window.location = data.redirect_url;
+              $('#login').css('display', 'none');
+              $('#signup').css('display', 'none');
+              $('#logout').css('display', 'block');
           },
           error: function (xhr, status) {
               console.log(status);
@@ -82,9 +84,7 @@ $(document).on('click', '#submitPost', function () {
         dataType: "JSON",
         success: function (data) {
             console.log(data);
-
-
-            
+            $('#postCC').prepend(data.info);
         },
         error: function (xhr, status) {
             console.log(status);

@@ -11,9 +11,10 @@ end
       if user && user.authenticate(params[:password])
           # sets the cookie to the browser
           session[:user_id] = user.id
-          redirect_to notes_path
+          render json: {login: true}
       else
           # flash.now.alert = "Email or password is invalid"
+          render json: {login: false}
           render "new"
           # redirect_to new_session_path
       end

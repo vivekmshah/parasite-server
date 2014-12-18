@@ -13,10 +13,13 @@ Rails.application.routes.draw do
 
   delete 'logout', to: 'sessions#destroy', as: 'logout'
   root 'notes#index'
-  resources :notes
+  resources :notes, except: [:show, :create]
   resources :users
 
   resources :comments
+
+  get 'notes/:id' => 'notes_fragment#show', as: :note_fragment
+  post 'notes' => 'notes_fragment#create'
 
   # match '*any' => 'application#options', :via => [:options]
 
