@@ -1,8 +1,12 @@
 $( document ).ready(function() {
 
   $('#add-post-container').toggle();
+<<<<<<< HEAD
   $('.add-comment-container').toggle();
+=======
+  // $('#domain').val(document.referrer);
   // console.log(document.referrer);
+>>>>>>> master
 
   $(document).on('click', '#hide-button', function() {
     $('#wndx-sidebar').css("right", "-410px");
@@ -35,13 +39,15 @@ $( document ).ready(function() {
               password: $('#password').val()
           },
           dataType: "HTML",
-          success: function (data) {sessionCC
+          success: function (data) {
               console.log(data);
-              $('#logout').toggle();
-              $('#sessionCC').css("right", "-380px");
+              $('#login').css('display', 'none');
+              $('#signup').css('display', 'none');
+              $('#logout').css('display', 'block');
+              console.log(data.user_id);
               $('#user_id').html(JSON.parse(data).user_id);
-              $('#addPost').toggle();
-              // $('#add-post-container').css('display', 'block');
+              $('#addPost').css('display', 'block');
+              $('#add-post-container').css('display', 'block');
           },
           error: function (xhr, status) {
               console.log(status);
@@ -88,42 +94,6 @@ $(document).on('click', '#submitPost', function () {
         success: function (data) {
             console.log(data);
             $('#postCC').prepend(data.info);
-        },
-        error: function (xhr, status) {
-            console.log(status);
-        }
-    });
-
-    return false;
-});
-
-// Ajax call for creating a post
-$(document).on('click', '.submitComment', function () {
-
-    console.log('hello?');
-    var AUTH_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    $.ajaxSetup({
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-        }
-    });
-    var keepItRel = $(this).attr('rel');
-    $.ajax({
-        type: "POST",
-        url: "/comments",
-        data: {
-            utf: "✓",
-            authenticity_token: encodeURIComponent(AUTH_TOKEN),
-            description: $('.add-comment-input[rel='+keepItRel+']').val(),
-            user_id: $('.add-comment-container[rel='+keepItRel+'] .user_id').val(),
-            note_id: $('.add-comment-container[rel='+keepItRel+'] .note_id').val(),
-            commit: "submit"
-        },
-        dataType: "JSON",
-        success: function (data) {
-            console.log(data);
-
-            // $('#postCC').prepend(data.info);
         },
         error: function (xhr, status) {
             console.log(status);
@@ -196,14 +166,6 @@ $(document).on('click', '.submitComment', function () {
 
 
   $(document).on('click', '.commentsLink', function() {
-
-    var keepItRel = $(this).attr('rel');
-    console.log($('.commentCC[rel='+keepItRel+']'));
-
-    $('.commentCC[rel='+keepItRel+']').css("right", "-10px");
-    // $('.hide-comments-vert-button').css("right", "370px");
-  });
-  $(document).on('click', '.postBody', function() {
 
     var keepItRel = $(this).attr('rel');
     console.log($('.commentCC[rel='+keepItRel+']'));
