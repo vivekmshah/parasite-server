@@ -35,7 +35,7 @@ $( document ).ready(function() {
               password: $('#password').val()
           },
           dataType: "HTML",
-          success: function (data) {sessionCC
+          success: function (data) {
               console.log(data);
               $('#logout').toggle();
               $('#sessionCC').css("right", "-380px");
@@ -51,7 +51,42 @@ $( document ).ready(function() {
       return false;
   });
 
+  $(document).on('click', '#signupSubmitButton', function() {
 
+      // Ajax called for authentication
+     console.log('hello?');
+      var AUTH_TOKEN = $('meta[name="csrf-token"]').attr('content');
+      $.ajaxSetup({
+          beforeSend: function (xhr) {
+              xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+          }
+      });
+
+      $.ajax({
+          type: "POST",
+          url: "/signup?&authenticity_token=" + encodeURIComponent(AUTH_TOKEN),
+          data: {
+              username: $('#usernameSU').val(),
+              password: $('#passwordSU').val(),
+              password_confirmation: $('#passwordSU').val()
+          },
+          dataType: "HTML",
+          success: function (data) {
+              console.log(data);
+              $('#logout').toggle();
+              $('#sessionCC').css("right", "-380px");
+              $('#user_id').html(JSON.parse(data).user_id);
+              $('#addPost').toggle();
+              // $('#add-post-container').css('display', 'block');
+          },
+          error: function (xhr, status) {
+              console.log(status);
+          }
+      });
+
+      return false;
+
+     });
 
  $(document).on('click', '#logout', function() {
 
@@ -59,8 +94,6 @@ $( document ).ready(function() {
      console.log('this is where we will put code to log out?');
 
   });
-
-
 
 // Ajax call for creating a post
 $(document).on('click', '#submitPost', function () {
@@ -252,11 +285,18 @@ $(document).on('click', '.submitComment', function () {
 
   });
 
+
+
   $(document).on('click', '#signup', function() {
+
     $('#sessionCC').css("right", "-10px");
-      $('#login').toggle();
+    $('#login').toggle();
     $('#signup').toggle();
+
   });
+
+
+
 
   $(document).on('click', '#hide-session-button', function() {
     $('#sessionCC').css("right", "-380px");
