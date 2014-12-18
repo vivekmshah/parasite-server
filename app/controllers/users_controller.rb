@@ -20,14 +20,38 @@ class UsersController < ApplicationController
   end
 
   def create
+
     user = User.new(user_params)
+    
     if user.save
       session[:user_id] = user.id
-      redirect_to notes_path
+      render json: {login: true, user_id: user.id}
     else
-      render 'new'
+      render json: {login: false}
     end
+
   end
+
+# CREATE SESSION CODE
+  # def create
+  #     user = User.where(username: params[:username]).first
+  #     # first make sure we actually find a user
+  #     # then see if user authenticates
+  #     if user && user.authenticate(params[:password])
+  #         # sets the cookie to the browser
+          # session[:user_id] = user.id
+          # render json: {login: true, user_id: user.id}
+  #     else
+  #         # flash.now.alert = "Email or password is invalid"
+  #         render json: {login: false}
+  #         render "new"
+  #         # redirect_to new_session_path
+  #     end
+  # end
+
+
+
+
 
   def update
     @user.update_attributes(user_params)
