@@ -35,15 +35,13 @@ $( document ).ready(function() {
               password: $('#password').val()
           },
           dataType: "HTML",
-          success: function (data) {
+          success: function (data) {sessionCC
               console.log(data);
-              $('#login').css('display', 'none');
-              $('#signup').css('display', 'none');
-              $('#logout').css('display', 'block');
-              console.log(data.user_id);
+              $('#logout').toggle();
+              $('#sessionCC').css("right", "-380px");
               $('#user_id').html(JSON.parse(data).user_id);
-              $('#addPost').css('display', 'block');
-              $('#add-post-container').css('display', 'block');
+              $('#addPost').toggle();
+              // $('#add-post-container').css('display', 'block');
           },
           error: function (xhr, status) {
               console.log(status);
@@ -162,6 +160,14 @@ $(document).on('click', '#submitPost', function () {
 
 
   $(document).on('click', '.commentsLink', function() {
+
+    var keepItRel = $(this).attr('rel');
+    console.log($('.commentCC[rel='+keepItRel+']'));
+
+    $('.commentCC[rel='+keepItRel+']').css("right", "-10px");
+    // $('.hide-comments-vert-button').css("right", "370px");
+  });
+  $(document).on('click', '.postBody', function() {
 
     var keepItRel = $(this).attr('rel');
     console.log($('.commentCC[rel='+keepItRel+']'));

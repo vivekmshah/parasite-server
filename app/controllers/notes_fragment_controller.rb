@@ -1,5 +1,8 @@
 class NotesFragmentController < FragmentController
-	def show
+
+  helper_method :current_user
+
+  def show
     @note = Note.get_multi(nil, params[:id]).first
 	end
 
@@ -18,5 +21,8 @@ class NotesFragmentController < FragmentController
     params.permit(:description, :domain, :path, :user_id)
   end
 
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id] 
+  end
 
 end
