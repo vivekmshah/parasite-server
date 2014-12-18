@@ -50,12 +50,12 @@
 
 <div class="add-comment-container" style="display:<%= current_user ? "block" : "none" %>" rel='<%="#{note.id}"%>' >
   <textarea name="textarea" rel='<%="#{note.id}"%>' rows="10" cols="50" class="add-comment-input" placeholder="Add your comment here"></textarea>
-  <textarea id="user_id" style="display:none;" >
+  <textarea rel='<%="#{note.id}"%>' class="user_id" style="display:none;" >
   <% if (current_user) %>
   <%= current_user.id %>
   <% end %> 
   </textarea>
-  <textarea id="note_id" style="display:none;" ><%= note.id %></textarea>
+  <textarea rel='<%="#{note.id}"%>' class="note_id" style="display:none;" ><%= note.id %></textarea>
   <div rel='<%="#{note.id}"%>' class="submitComment"><i class="fa fa-plus"></i></div>
   <div rel='<%="#{note.id}"%>' class="closeComment"><i class="fa fa-times"></i></div>
 </div>
@@ -75,7 +75,7 @@
     <div class='commentContainer'>
       <span class="commentBody"><%= comment.description %></span>
       <div class="postMeta">
-        <span class="userName">@<%= comment.user_id %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= comment.created_at.strftime("%m/%d/%Y")%>
+        <span class="userName">@<%= User.find(comment.user_id).username %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= comment.created_at.strftime("%m/%d/%Y")%>
       </span>
       </div>
     </div>

@@ -97,6 +97,42 @@ $(document).on('click', '#submitPost', function () {
     return false;
 });
 
+// Ajax call for creating a post
+$(document).on('click', '.submitComment', function () {
+
+    console.log('hello?');
+    var AUTH_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $.ajaxSetup({
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+        }
+    });
+    var keepItRel = $(this).attr('rel');
+    $.ajax({
+        type: "POST",
+        url: "/comments",
+        data: {
+            utf: "✓",
+            authenticity_token: encodeURIComponent(AUTH_TOKEN),
+            description: $('.add-comment-input[rel='+keepItRel+']').val(),
+            user_id: $('.add-comment-container[rel='+keepItRel+'] .user_id').val(),
+            note_id: $('.add-comment-container[rel='+keepItRel+'] .note_id').val(),
+            commit: "submit"
+        },
+        dataType: "JSON",
+        success: function (data) {
+            console.log(data);
+
+            // $('#postCC').prepend(data.info);
+        },
+        error: function (xhr, status) {
+            console.log(status);
+        }
+    });
+
+    return false;
+});
+
 
 
 

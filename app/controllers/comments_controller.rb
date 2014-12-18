@@ -4,9 +4,9 @@ def create
     comment = Comment.new(comment_params)
 
       if comment.save
-        redirect_to note_path(params[:note_id])
+        render json: comment, status: :ok
       else
-      end
+     end
   
   end
 
