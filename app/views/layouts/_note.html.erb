@@ -9,6 +9,8 @@
   </div>
 </div>
 
+
+
 <!-- User panel with dumb content -->
 
 <div rel='<%="#{note.user_id}"%>' class='userCC'>
@@ -30,6 +32,21 @@
   <% end %>
 
 </div>
+
+
+<!-- add comment stuff -->
+
+<div rel='<%="#{note.id}"%>' class="addComment" style="display:<%= current_user ? "block" : "none" %>"><i class="fa fa-plus">&nbsp;&nbsp;<span id="addCommentsHeader">ADD COMMENT</span>&nbsp;&nbsp;</i></div>   
+
+<div class="add-comment-container " rel='<%="#{note.id}"%>' style="display:<%= current_user ? "block" : "none" %>">
+  <textarea name="textarea" rel='<%="#{note.id}"%>' rows="10" cols="50" class="add-comment-input" placeholder="Add your comment here"></textarea>
+  <textarea id="user_id" style="display:none;" ><%= if current_user.id %></textarea>
+  <textarea id="note_id" style="display:none;" ><%= note.id %></textarea>
+  <div class="submitComment"><i class="fa fa-plus"></i></div>
+  <div class="closeComment"><i class="fa fa-times"></i></div>
+</div>
+
+
 
 <!-- Comments panel -->
 
