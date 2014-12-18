@@ -16,20 +16,18 @@
 
     <div id="logo"></div>
 
-<% if current_user %>
   <!-- add post stuff -->
 
-    <div id="addPost"><i class="fa fa-plus"></i></div>    
+    <div id="addPost" style="display:<%= current_user ? "block" : "none" %>"><i class="fa fa-plus"></i></div>    
 
-    <div id="add-post-container">
+    <div id="add-post-container" style="display:<%= current_user ? "block" : "none" %>">
       <textarea name="textarea" rows="10" cols="50" id="add-post-input" placeholder="Add your post here"></textarea>
       <textarea id="domain" style="display:none;"></textarea>
-      <textarea id="user_id" style="display:none;" ><%=current_user.id%></textarea>
+      <textarea id="user_id" style="display:none;"></textarea>
       <div id="submitPost"><i class="fa fa-plus"></i></div>
       <div id="closePost"><i class="fa fa-times"></i></div>
     </div>
 
-<% end %>
     
   <!-- Big post container with userCC and commentCC inside -->
     

@@ -11,7 +11,7 @@ end
       if user && user.authenticate(params[:password])
           # sets the cookie to the browser
           session[:user_id] = user.id
-          render json: {login: true}
+          render json: {login: true, user_id: user.id}
       else
           # flash.now.alert = "Email or password is invalid"
           render json: {login: false}
