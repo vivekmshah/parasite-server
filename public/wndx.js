@@ -97,7 +97,7 @@ $(document).on('click', '#submitPost', function () {
     return false;
 });
 
-// Ajax call for creating a post
+// Ajax call for creating a comment
 $(document).on('click', '.submitComment', function () {
 
     console.log('hello?');
@@ -123,7 +123,7 @@ $(document).on('click', '.submitComment', function () {
         success: function (data) {
             console.log(data);
             console.log(data.info);
-            $('#postCC').prepend(data.info);
+            $('.comments-body-container[rel='+keepItRel+']').prepend(data.info);
         },
         error: function (xhr, status) {
             console.log(status);

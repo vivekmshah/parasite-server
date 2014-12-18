@@ -3,15 +3,14 @@ class CommentsFragmentController < FragmentController
   helper_method :current_user
 
   def show
-    @note = Note.get_multi(nil, params[:id]).first
+    @comment = Comment.all
 	end
 
   def create
     comment = Comment.new(comment_params)
-    
     if comment.save
-      @note = Note.where(id: comment.note_id)
-      render json: {info: render_to_string("layouts/_note.html.erb", locals: {note: @note}) }
+      @comment = Comment.where(id: comment.id)
+      render json: {info: render_to_string("layouts/_comment.html.erb", locals: {comment: @comment}) }
       # render json: comment, status: :ok 
     else
     end

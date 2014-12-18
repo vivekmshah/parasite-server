@@ -71,15 +71,9 @@
     <% @postComments = Comment.where(note_id: note.id) %>    
     <% @postComments.each do |comment|%>
 
-    <div rel='<%="#{note.id}"%>' class='commentContainer'>
-      <span class="commentBody"><%= comment.description %></span>
-      <div class="postMeta">
-        <span class="userName">@<%= User.find(comment.user_id).username %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= comment.created_at.strftime("%m/%d/%Y")%>
-      </span>
-      </div>
-    </div>
+    <%= render "layouts/comment", comment: comment %>
 
-  <% end %>
+    <% end %>
 
   </div>
 
