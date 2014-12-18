@@ -1,6 +1,8 @@
 $( document ).ready(function() {
 
   $('#add-post-container').toggle();
+  $('#domain').val(document.referrer);
+  console.log(document.referrer);
 
   $(document).on('click', '#hide-button', function() {
     $('#wndx-sidebar').css("right", "-410px");
