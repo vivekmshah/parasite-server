@@ -42,6 +42,8 @@ $( document ).ready(function() {
               $('#logout').css('display', 'block');
               console.log(data.user_id);
               $('#user_id').html(JSON.parse(data).user_id);
+              $('#addPost').css('display', 'block');
+              $('#add-post-container').css('display', 'block');
           },
           error: function (xhr, status) {
               console.log(status);
