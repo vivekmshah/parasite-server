@@ -35,6 +35,9 @@ $( document ).ready(function() {
           dataType: "HTML",
           success: function (data) {
               console.log(data);
+              $('#login').css('display', 'none');
+              $('#signup').css('display', 'none');
+              $('#logout').css('display', 'block');
           },
           error: function (xhr, status) {
               console.log(status);

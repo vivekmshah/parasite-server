@@ -7,12 +7,9 @@
       <div id="hide-button"><i class="fa fa-arrow-right">&nbsp; HIDE</i></div>
 
       <div id='top-bar-buttons'>
-      <% if !current_user %>
-        <div id="login">LOGIN</div>
-        <div id="signup">SIGN UP</div>
-      <% else %>
-        <div id="logout">LOG OUT</div>
-      <% end %>
+        <div id="login" style="display:<%= current_user ? "none" : "block" %>">LOGIN</div>
+        <div id="signup" style="display:<%= current_user ? "none" : "block" %>">SIGN UP</div>
+        <div id="logout" style="display:<%= current_user ? "block" : "none" %>">LOG OUT</div>
       </div>
 
     </div>
@@ -60,10 +57,6 @@
     </div>
 
 
-
-
-
-
 <% @notes.each do |note|%>
 
   <%= render "layouts/note", note: note %>
@@ -71,50 +64,3 @@
 <% end %>
 
 </div>
-
-
-
-
-      
-    <!-- Link stuff with dumb content
-
-    <div id="linkCC">
-
-      <div class="linkContainer">
-        <span class="link">1. This is a link to a story. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-      <div class="linkContainer">
-        <span class="link">2. Another link to another story on this site. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-      <div class="linkContainer">
-        <span class="link">3. This is just another story that I found. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-      <div class="linkContainer">
-        <span class="link">4. This is a link to a story. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-      <div class="linkContainer">
-        <span class="link">5. This is a link to a story. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-      <div class="linkContainer">
-        <span class="link">6. Another link to another story on this site. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-      <div class="linkContainer">
-        <span class="link">7. This is just another story that I found. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-      <div class="linkContainer">
-        <span class="link">8. This is a link to a story. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-
-    </div>
-
-    -->
-
-
