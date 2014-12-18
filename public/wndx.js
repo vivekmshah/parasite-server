@@ -1,8 +1,8 @@
 $( document ).ready(function() {
 
   $('#add-post-container').toggle();
-  $('#domain').val(document.referrer);
-  console.log(document.referrer);
+  // $('#domain').val(document.referrer);
+  // console.log(document.referrer);
 
   $(document).on('click', '#hide-button', function() {
     $('#wndx-sidebar').css("right", "-410px");
@@ -78,7 +78,7 @@ $(document).on('click', '#submitPost', function () {
             utf: "✓",
             authenticity_token: encodeURIComponent(AUTH_TOKEN),
             description: $('#add-post-input').val(),
-            domain: $('#domain').val(),
+            domain: document.referrer,
             user_id: $('#user_id').val(),
             commit: "submit"
         },
