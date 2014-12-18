@@ -1,5 +1,7 @@
   <!-- Show sidebar button -->
-  <div id="show-button"><div id="button-circle"></div></div>
+  <div id="show-button">
+    <div id="button-circle"></div>
+  </div>
   <div id="wndx-sidebar">
 
     <!-- Sidebar top nav bar -->
@@ -7,20 +9,20 @@
       <div id="hide-button"><i class="fa fa-arrow-right">&nbsp; HIDE</i></div>
 
       <div id='top-bar-buttons'>
-      <% if !current_user %>
+        <% if !current_user %>
         <div id="login">LOGIN</div>
         <div id="signup">SIGN UP</div>
-      <% else %>
+        <% else %>
         <div id="logout">LOG OUT</div>
-      <% end %>
+        <% end %>
       </div>
 
     </div>
 
     <div id="logo"></div>
 
-  <!-- add post stuff -->
-<% if current_user %>
+    <!-- add post stuff -->
+    <% if current_user %>
 
     <div id="addPost"><i class="fa fa-plus"></i></div>    
 
@@ -32,52 +34,52 @@
       <div id="closePost"><i class="fa fa-times"></i></div>
     </div>
 
-<% end %>
+    <% end %>
     
-  <!-- Big post container with userCC and commentCC inside -->
+    <!-- Big post container with userCC and commentCC inside -->
     
     <div id="postCC">
 
-  <!-- sessions panel -->
+      <!-- sessions panel -->
 
-    <div id="sessionCC">
-      <div id="hide-session-button"><i class="fa fa-arrow-right">&nbsp; CLOSE</i></div>
+      <div id="sessionCC">
+        <div id="hide-session-button"><i class="fa fa-arrow-right">&nbsp; CLOSE</i></div>
 
-      <div id="signupContainer">
-        <div id="signupHeader">Sign Up</div>
-        <input type="text" id="usernameSU" placeholder="Create username" class="usernameInput"><br>
-        <input type="password" id="passwordSU" placeholder="Create password" class="passwordInput">
-        <div id="signupSubmitButton"><span class='submit'>SUBMIT</span></div>
+        <div id="signupContainer">
+          <div id="signupHeader">Sign Up</div>
+          <input type="text" id="usernameSU" placeholder="Create username" class="usernameInput"><br>
+          <input type="password" id="passwordSU" placeholder="Create password" class="passwordInput">
+          <div id="signupSubmitButton"><span class='submit'>SUBMIT</span></div>
+        </div>
+
+        <div id="loginContainer">
+          <div id="loginHeader">Login</div>
+          <input type="text" id="username" placeholder="Username" class="usernameInput"><br>
+          <input type="password" id="password" placeholder="Password" class="passwordInput">
+          <div id="loginSubmitButton"><span class='submit'>SUBMIT</span></div>
+        </div>
+
       </div>
 
-      <div id="loginContainer">
-        <div id="loginHeader">Login</div>
-        <input type="text" id="username" placeholder="Username" class="usernameInput"><br>
-        <input type="password" id="password" placeholder="Password" class="passwordInput">
-        <div id="loginSubmitButton"><span class='submit'>SUBMIT</span></div>
-      </div>
-
-    </div>
 
 
 
 
 
+      <% @notes.each do |note|%>
 
-<% @notes.each do |note|%>
-
-  <!-- Post panel stuff with dumb content -->
+      <!-- Post panel stuff with dumb content -->
 
       <div class="postContainer">
         <div class="post">        
           <span class="postBody"><%= note.description %></span>     
           <div class="postMeta">
             <span rel='<%="#{note.user_id}"%>' class="userName">@<%= note.username %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= note.created_at.strftime("%m/%d/%Y")%>
-        </span> &nbsp;&nbsp;| &nbsp;&nbsp;<span rel='<%="#{note.id}"%>' class="commentsLink"><i class="fa fa-comment"></i>&nbsp;<%= note.comments.count %></span></div>   
+          </span> &nbsp;&nbsp;| &nbsp;&nbsp;<span rel='<%="#{note.id}"%>' class="commentsLink"><i class="fa fa-comment"></i>&nbsp;<%= note.comments.count %></span></div>   
         </div>
       </div>
 
-  <!-- User panel with dumb content -->
+      <!-- User panel with dumb content -->
 
       <div rel='<%="#{note.user_id}"%>' class='userCC'>
         <div id="hide-user-button"><i class="fa fa-arrow-right">&nbsp; HIDE USER</i></div>
@@ -90,97 +92,76 @@
         <div class='commentContainer'>
           <span class="commentBody"><%= comment.description %></span>
           <div class="postMeta">
-              <span class="userName">@<%= comment.user_id %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= comment.created_at.strftime("%m/%d/%Y")%>
+            <span class="userName">@<%= comment.user_id %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= comment.created_at.strftime("%m/%d/%Y")%>
           </span>
-          </div>
         </div>
-
-        <% end %>
-
       </div>
 
- <!-- Comments panel -->
+      <% end %>
 
-      <div rel='<%="#{note.id}"%>' class='commentCC'>
-        
-        <div class="postContainer-in-comments">
-          <div class="post">        
-            <span class="postBody-in-comments"><%= note.description %></span>     
-            <div class="postMeta">
-              <span class="userName">@<%= note.username %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= note.created_at.strftime("%m/%d/%Y")%>
-            </div>    
-          </div>
+    </div>
+
+    <!-- Comments panel -->
+
+    <div rel='<%="#{note.id}"%>' class='commentCC'>
+
+      <div class="postContainer-in-comments">
+        <div class="post">        
+          <span class="postBody-in-comments"><%= note.description %></span>     
+          <div class="postMeta">
+            <span class="userName">@<%= note.username %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= note.created_at.strftime("%m/%d/%Y")%>
+          </div>    
         </div>
+      </div>
+      <!-- add comment stuff -->
+      <% if current_user %>
 
-        <div id="hide-comments-button"><i class="fa fa-arrow-right">&nbsp; HIDE COMMENTS</i></div>
-        <div class="hide-comments-vert-button"></div>
-        <div id='commentHeader'><%= note.comments.count %></div>
 
-  <!-- Repeated dumb comments -->
 
-    <% @postComments = Comment.where(note_id: note.id) %>    
-    <% @postComments.each do |comment|%>
+
+      <div rel='<%="#{note.id}"%>' class="addComment"><i class="fa fa-plus">&nbsp;&nbsp;<span id="addCommentsHeader">ADD COMMENT</span>&nbsp;&nbsp;</i></div>   
+
+      <div class="add-comment-container " rel='<%="#{note.id}"%>' >
+        <textarea name="textarea" rel='<%="#{note.id}"%>' rows="10" cols="50" class="add-comment-input" placeholder="Add your comment here"></textarea>
+        <textarea id="user_id" style="display:none;" ><%=current_user.id%></textarea>
+        <textarea id="note_id" style="display:none;" ><%= note.id %></textarea>
+        <div class="submitComment"><i class="fa fa-plus"></i></div>
+        <div class="closeComment"><i class="fa fa-times"></i></div>
+      </div>
+
+
+
+      <% end %>
+
+      <div id="hide-comments-button"><i class="fa fa-arrow-right">&nbsp; HIDE COMMENTS</i></div>
+      <!-- <div class="hide-comments-vert-button"></div> -->
+      <div rel='<%="#{note.id}"%>' class="comments-body-container">
+        <div id='commentHeader'><%= note.comments.count %> Comments</div>
+
+        <!-- Repeated dumb comments -->
+
+        <% @postComments = Comment.where(note_id: note.id) %>    
+        <% @postComments.each do |comment|%>
 
         <div class='commentContainer'>
           <span class="commentBody"><%= comment.description %></span>
           <div class="postMeta">
-              <span class="userName">@<%= comment.user_id %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= comment.created_at.strftime("%m/%d/%Y")%>
+            <span class="userName">@<%= comment.user_id %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= comment.created_at.strftime("%m/%d/%Y")%>
           </span>
-          </div>
         </div>
+      </div>
 
-    <% end %>
+      <% end %>
 
 
     </div>
+  </div>
+  <% end %>
 
-<% end %>
+</div>
 
 </div>
 
 
-
-
-      
-    <!-- Link stuff with dumb content
-
-    <div id="linkCC">
-
-      <div class="linkContainer">
-        <span class="link">1. This is a link to a story. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-      <div class="linkContainer">
-        <span class="link">2. Another link to another story on this site. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-      <div class="linkContainer">
-        <span class="link">3. This is just another story that I found. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-      <div class="linkContainer">
-        <span class="link">4. This is a link to a story. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-      <div class="linkContainer">
-        <span class="link">5. This is a link to a story. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-      <div class="linkContainer">
-        <span class="link">6. Another link to another story on this site. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-      <div class="linkContainer">
-        <span class="link">7. This is just another story that I found. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-      <div class="linkContainer">
-        <span class="link">8. This is a link to a story. </span>
-        <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;44</span> 
-      </div>
-
-    </div>
-
-    -->
 
 

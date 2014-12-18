@@ -1,6 +1,7 @@
 $( document ).ready(function() {
 
   $('#add-post-container').toggle();
+  $('.add-comment-container').toggle();
 
   $(document).on('click', '#hide-button', function() {
     $('#wndx-sidebar').css("right", "-410px");
@@ -105,7 +106,6 @@ $(document).on('click', '#submitPost', function () {
 
   $(document).on('click', '#addPost', function() {
     $('#postCC').css("margin-top", "280px");
-    $('#addPost').css("opacity", "0");
     $('#addPost').toggle();
     $('#add-post-container').toggle();
     $('#add-post-input').css("opacity", "1");
@@ -114,7 +114,7 @@ $(document).on('click', '#submitPost', function () {
 
   $(document).on('click', '#submitPost', function() {
     $('#postCC').css("margin-top", "90px");
-    $('#addPost').css("opacity", "1");
+    $('#addPost').toggle();
     $('#add-post-container').toggle();
     $('#add-post-input').css("opacity", "0");
     $('#add-post-input').css("height", "0px");
@@ -122,12 +122,39 @@ $(document).on('click', '#submitPost', function () {
 
   $(document).on('click', '#closePost', function() {
     $('#postCC').css("margin-top", "90px");
-    $('#addPost').css("opacity", "1");
     $('#addPost').toggle();
     $('#add-post-container').toggle();
     $('#add-post-input').css("opacity", "0");
     $('#add-post-input').css("height", "0px");
   });
+
+
+    $(document).on('click', '.addComment', function() {
+    // $('.commentCC').css("margin-top", "280px");
+    var keepItRel = $(this).attr('rel');
+    $('.addComment[rel='+keepItRel+']').toggle();
+    $('.add-comment-input[rel='+keepItRel+']').css("opacity", "1");
+      $('.add-comment-input[rel='+keepItRel+']').css("height", "80px");
+      $('.add-comment-container[rel='+keepItRel+']').toggle();
+  });
+
+  $(document).on('click', '.submitComment', function() {
+    $('#commentCC').css("margin-top", "90px");
+    $('.addComment').toggle();
+    $('.add-comment-container').toggle();
+    $('.add-comment-input').css("opacity", "0");
+    $('.add-comment-input').css("height", "0px");
+  });
+
+  $(document).on('click', '.closeComment', function() {
+    $('#commentCC').css("margin-top", "90px");
+    $('.addComment').toggle();
+    $('.add-comment-container').toggle();
+    $('.add-comment-input').css("opacity", "0");
+    $('.add-comment-input').css("height", "0px");
+  });
+
+
 
   $(document).on('click', '.commentsLink', function() {
 
@@ -135,7 +162,7 @@ $(document).on('click', '#submitPost', function () {
     console.log($('.commentCC[rel='+keepItRel+']'));
 
     $('.commentCC[rel='+keepItRel+']').css("right", "-10px");
-    $('.hide-comments-vert-button').css("right", "370px");
+    // $('.hide-comments-vert-button').css("right", "370px");
   });
 
   $(document).on('click', '#hide-comments-button', function() {
