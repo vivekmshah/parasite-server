@@ -23,6 +23,7 @@ end
   def destroy
       # Kill cookies!
       reset_session
-      redirect_to :back
+      render json: {logout: true}
+      # redirect_to :back
   end
 end

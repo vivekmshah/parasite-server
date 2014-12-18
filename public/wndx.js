@@ -85,12 +85,54 @@ $( document ).ready(function() {
 
      });
 
+
+
  $(document).on('click', '#logout', function() {
 
       // Ajax call for authentication
      console.log('this is where we will put code to log out?');
 
+      /* 
+
+      // Ajax called for authentication
+      var AUTH_TOKEN = $('meta[name="csrf-token"]').attr('content');
+      $.ajaxSetup({
+          beforeSend: function (xhr) {
+              xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+          }
+      });
+
+      $.ajax({
+          type: "DELETE",
+          url: "/logout?&authenticity_token=" + encodeURIComponent(AUTH_TOKEN),
+          data: {
+              // username: $('#usernameSU').val(),
+              // password: $('#passwordSU').val(),
+              // password_confirmation: $('#passwordSU').val()
+          },
+          dataType: "HTML",
+          success: function (data) {
+              console.log(data);
+              // $('#logout').toggle();
+              // $('#sessionCC').css("right", "-380px");
+              // $('#user_id').html(JSON.parse(data).user_id);
+              // $('#addPost').toggle();
+              // $('#add-post-container').css('display', 'block');
+          },
+          error: function (xhr, status) {
+              console.log(status);
+          }
+      });
+
+      return false;
+
+      */
+
   });
+
+
+
+
 
 // Ajax call for creating a post
 $(document).on('click', '#submitPost', function () {
@@ -103,6 +145,14 @@ $(document).on('click', '#submitPost', function () {
         }
     });
 
+    var url;
+    var ref;
+
+    if (document.referrer) {
+       url = document.referrer; 
+       ref = url.match(/:\/\/(.[^/]+)/)[1];
+    }
+
     $.ajax({
         type: "POST",
         url: "/notes",
@@ -110,7 +160,7 @@ $(document).on('click', '#submitPost', function () {
             utf: "✓",
             authenticity_token: encodeURIComponent(AUTH_TOKEN),
             description: $('#add-post-input').val(),
-            domain: document.referrer,
+            domain: ref,
             user_id: $('#user_id').val(),
             commit: "submit"
         },
