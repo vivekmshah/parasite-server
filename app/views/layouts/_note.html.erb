@@ -18,13 +18,13 @@
   <div class="hide-user-vert-button"></div>
   <div class='userHeader'><%= note.username %></div>
 
-  <% @userComments = Comment.where(user_id: note.user_id) %>
-  <% @userComments.each do |comment|%>
+  <% @userNotes = Note.where(user_id: note.user_id) %>
+  <% @userNotes.each do |n|%>
 
   <div class='commentContainer'>
-    <span class="commentBody"><%= comment.description %></span>
+    <span class="commentBody"><%= n.description %></span>
     <div class="postMeta">
-        <span class="userName">@<%= comment.user_id %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= comment.created_at.strftime("%m/%d/%Y")%>
+        <span class="userName">@<%= n.user_id %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= n.created_at.strftime("%m/%d/%Y")%>
     </span>
     </div>
   </div>
