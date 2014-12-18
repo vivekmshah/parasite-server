@@ -13,9 +13,6 @@ $( document ).ready(function() {
     $('#top-bar').css("right", "-380px");
   });
 
-
-
-
   $(document).on('click', '#loginSubmitButton', function() {
 
       // Ajax called for authentication
@@ -113,8 +110,7 @@ $(document).on('click', '#submitPost', function () {
             utf: "✓",
             authenticity_token: encodeURIComponent(AUTH_TOKEN),
             description: $('#add-post-input').val(),
-            domain: window.hostname,
-            path: window.pathname,
+            domain: document.referrer,
             user_id: $('#user_id').val(),
             commit: "submit"
         },
