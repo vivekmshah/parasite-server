@@ -147,11 +147,14 @@ $(document).on('click', '#submitPost', function () {
 
     var url;
     var domain;
+    var path;
 
     if (document.referrer) {
        url = document.referrer; 
        domain = url.match(/:\/\/(.[^/]+)/)[1];
     }
+
+    path = url.substr(url.search(domain)).replace(domain,"");
 
     $.ajax({
         type: "POST",
@@ -161,6 +164,7 @@ $(document).on('click', '#submitPost', function () {
             authenticity_token: encodeURIComponent(AUTH_TOKEN),
             description: $('#add-post-input').val(),
             domain: domain,
+            path: path,
             user_id: $('#user_id').val(),
             commit: "submit"
         },

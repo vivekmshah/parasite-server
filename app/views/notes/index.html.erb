@@ -1,67 +1,66 @@
-  <!-- Show sidebar button -->
-  <div id="show-button">
-    <div id="button-circle"></div>
-  </div>
-  <div id="wndx-sidebar">
+<!-- Show sidebar button -->
+<div id="show-button">
+  <div id="button-circle"></div>
+</div>
 
-    <!-- Sidebar top nav bar -->
-    <div id="top-bar">
-      <div id="hide-button"><i class="fa fa-arrow-right">&nbsp; HIDE</i></div>
+<div id="wndx-sidebar">
 
-      <div id='top-bar-buttons'>
-        <div id="login" style="display:<%= current_user ? "none" : "block" %>">LOGIN</div>
-        <div id="signup" style="display:<%= current_user ? "none" : "block" %>">SIGN UP</div>
-        <div id="logout" style="display:<%= current_user ? "block" : "none" %>">LOG OUT</div>
-      </div>
+  <!-- Sidebar top nav bar -->
+  <div id="top-bar">
+    <div id="hide-button"><i class="fa fa-arrow-right">&nbsp; HIDE</i></div>
 
+    <div id='top-bar-buttons'>
+      <div id="login" style="display:<%= current_user ? "none" : "block" %>">LOGIN</div>
+      <div id="signup" style="display:<%= current_user ? "none" : "block" %>">SIGN UP</div>
+      <div id="logout" style="display:<%= current_user ? "block" : "none" %>">LOG OUT</div>
     </div>
+  </div>
 
-    <div id="logo"></div>
+  <div id="logo"></div>
 
   <!-- add post stuff -->
 
-    <div id="addPost" style="display:<%= current_user ? "block" : "none" %>"><i class="fa fa-plus"></i></div>    
+  <div id="addPost" style="display:<%= current_user ? "block" : "none" %>"><i class="fa fa-plus"></i></div>    
 
-    <div id="add-post-container" >
-      <textarea name="textarea" rows="10" cols="50" id="add-post-input" placeholder="Add your post here"></textarea>
-      <textarea id="domain" style="display:none;"></textarea>
-      <textarea id="user_id" style="display:none;"></textarea>
-      <div id="submitPost"><i class="fa fa-plus"></i></div>
-      <div id="closePost"><i class="fa fa-times"></i></div>
-    </div>
+  <div id="add-post-container" >
+    <textarea name="textarea" rows="10" cols="50" id="add-post-input" placeholder="Add your post here"></textarea>
+    <textarea id="domain" style="display:none;"></textarea>
+    <textarea id="user_id" style="display:none;"></textarea>
+    <div id="submitPost"><i class="fa fa-plus"></i></div>
+    <div id="closePost"><i class="fa fa-times"></i></div>
+  </div>
 
+  <!-- Big post container with userCC and commentCC inside -->
+      
+  <div id="postCC">
 
+    <!-- sessions panel -->
 
+    <div id="sessionCC">
+      <div id="hide-session-button"><i class="fa fa-arrow-right">&nbsp; CLOSE</i></div>
 
-    <!-- Big post container with userCC and commentCC inside -->
-    
-    <div id="postCC">
-
-      <!-- sessions panel -->
-
-      <div id="sessionCC">
-        <div id="hide-session-button"><i class="fa fa-arrow-right">&nbsp; CLOSE</i></div>
-
-        <div id="signupContainer">
-          <div id="signupHeader">Sign Up</div>
-          <input type="text" id="usernameSU" placeholder="Create username" class="usernameInput"><br>
-          <input type="password" id="passwordSU" placeholder="Create password" class="passwordInput">
-          <div id="signupSubmitButton"><span class='submit'>SUBMIT</span></div>
-        </div>
-
-        <div id="loginContainer">
-          <div id="loginHeader">Login</div>
-          <input type="text" id="username" placeholder="Username" class="usernameInput"><br>
-          <input type="password" id="password" placeholder="Password" class="passwordInput">
-          <div id="loginSubmitButton"><span class='submit'>SUBMIT</span></div>
-        </div>
-
+      <div id="signupContainer">
+        <div id="signupHeader">Sign Up</div>
+        <input type="text" id="usernameSU" placeholder="Create username" class="usernameInput"><br>
+        <input type="password" id="passwordSU" placeholder="Create password" class="passwordInput">
+        <div id="signupSubmitButton"><span class='submit'>SUBMIT</span></div>
       </div>
 
-      <% @notes.each do |note|%>
+      <div id="loginContainer">
+        <div id="loginHeader">Login</div>
+        <input type="text" id="username" placeholder="Username" class="usernameInput"><br>
+        <input type="password" id="password" placeholder="Password" class="passwordInput">
+        <div id="loginSubmitButton"><span class='submit'>SUBMIT</span></div>
+      </div>
 
-      <%= render "layouts/note", note: note %>
+    </div>
 
-      <% end %>
+    <% @notes.each do |note|%>
+
+    <%= render "layouts/note", note: note %>
+
+    <% end %>
+
+  </div>
 
 </div>
