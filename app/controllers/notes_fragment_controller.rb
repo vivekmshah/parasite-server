@@ -11,10 +11,10 @@ class NotesFragmentController < FragmentController
     # require 'open-uri'
 
     noko_url = 'http://' + params[:domain] + params[:path]    
-    # noko_title = Nokogiri::HTML(open(noko_url, "User-Agent" => "Ruby/#{RUBY_VERSION}")).xpath("//title")[0].children[0].content
-    # note = Note.new(description: params[:description], domain: params[:domain], path: params[:path], user_id: params[:user_id], title: noko_title)
-    note = Note.new(description: params[:description], domain: params[:domain], path: params[:path], user_id: params[:user_id], title: noko_url)
-    
+    noko_title = Nokogiri::HTML(open(noko_url, "User-Agent" => "Ruby/#{RUBY_VERSION}")).xpath("//title")[0].children[0].content
+    note = Note.new(description: params[:description], domain: params[:domain], path: params[:path], user_id: params[:user_id], title: noko_title)
+
+    # note = Note.new(description: params[:description], domain: params[:domain], path: params[:path], user_id: params[:user_id], title: noko_url)    
     # note = Note.new(params[:description], params[:domain], params[:path], params[:user_id])
 
     if note.save
