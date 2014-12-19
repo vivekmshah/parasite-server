@@ -65,22 +65,14 @@
 
   <div rel='<%="#{note.id}"%>' class="comments-body-container">
   
-    <div id='commentHeader'><%= note.comments.count %> Comments</div>
-
-    <!-- Repeated dumb comments -->
+    <div rel='<%="#{note.id}"%>' class='commentHeader'><%= note.comments.count %> Comments</div>
 
     <% @postComments = Comment.where(note_id: note.id) %>    
     <% @postComments.each do |comment|%>
 
-    <div class='commentContainer'>
-      <span class="commentBody"><%= comment.description %></span>
-      <div class="postMeta">
-        <span class="userName">@<%= User.find(comment.user_id).username %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= (comment.created_at ? comment.created_at.strftime("%m/%d/%Y") : "" ) %>
-      </span>
-      </div>
-    </div>
+      <%= render "layouts/comment", comment: comment %>
 
-  <% end %>
+    <% end %>
 
   </div>
 

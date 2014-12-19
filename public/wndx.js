@@ -1,7 +1,7 @@
 $( document ).ready(function() {
 
   $('#add-post-container').toggle();
-  $('.add-comment-container').toggle();
+  $('.add-comment-container').hide(); 
   // console.log(document.referrer);
 
   $(document).on('click', '#hide-button', function() {
@@ -10,7 +10,8 @@ $( document ).ready(function() {
     $('.commentCC').css("right", "-380px");
     $('.userCC').css("right", "-380px");
     $('#sessionCC').css("right", "-380px");
-    $('#top-bar').css("right", "-380px");
+    $('#top-bar').css("right", "-400px");
+    $('.add-comment-container').hide(); 
   });
 
   $(document).on('click', '#loginSubmitButton', function() {
@@ -38,6 +39,8 @@ $( document ).ready(function() {
               $('#sessionCC').css("right", "-380px");
               $('#user_id').html(JSON.parse(data).user_id);
               $('#addPost').toggle();
+              $('.addComment').toggle();
+              // $('.add-comment-container').toggle();          
               // $('#add-post-container').css('display', 'block');
           },
           error: function (xhr, status) {
@@ -74,6 +77,8 @@ $( document ).ready(function() {
               $('#sessionCC').css("right", "-380px");
               $('#user_id').html(JSON.parse(data).user_id);
               $('#addPost').toggle();
+              $('.addComment').toggle();
+              // $('.add-comment-container').toggle();
               // $('#add-post-container').css('display', 'block');
           },
           error: function (xhr, status) {
@@ -181,7 +186,7 @@ $(document).on('click', '#submitPost', function () {
     return false;
 });
 
-// Ajax call for creating a post
+// Ajax call for creating a comment
 $(document).on('click', '.submitComment', function () {
 
     console.log('hello?');
@@ -207,7 +212,7 @@ $(document).on('click', '.submitComment', function () {
         success: function (data) {
             console.log(data);
 
-            // $('#postCC').prepend(data.info);
+            $('.commentHeader[rel='+keepItRel+']').after(data.info);
         },
         error: function (xhr, status) {
             console.log(status);
@@ -298,13 +303,15 @@ $(document).on('click', '.submitComment', function () {
 
   $(document).on('click', '#hide-comments-button', function() {
     $('.commentCC').css("right", "-380px");
-    $('.hide-comments-vert-button').css("right", "0px");
+    $('.add-comment-container').hide(); 
+    // $('.hide-comments-vert-button').css("right", "0px");
   });
 
-  $(document).on('click', '.hide-comments-vert-button', function() {
-    $('.commentCC').css("right", "-380px");
-    $('.hide-comments-vert-button').css("right", "0px");
-  });
+  // $(document).on('click', '.hide-comments-vert-button', function() {
+  //   $('.commentCC').css("right", "-380px");
+  //   $('.add-comment-container').hide(); 
+  //   // $('.hide-comments-vert-button').css("right", "0px");
+  // });
 
   $(document).on('mouseover', '.hide-comments-vert-button', function() {
     $('.commentCC').css("border-left", "1px solid rgba(255,255,255,.8)");
