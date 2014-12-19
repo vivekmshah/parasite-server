@@ -40,7 +40,7 @@ $( document ).ready(function() {
               $('#user_id').html(JSON.parse(data).user_id);
               $('#addPost').toggle();
               $('.addComment').toggle();
-              // $('.add-comment-container').toggle();          
+              $('.add-comment-container').hide();          
               // $('#add-post-container').css('display', 'block');
           },
           error: function (xhr, status) {
@@ -78,7 +78,7 @@ $( document ).ready(function() {
               $('#user_id').html(JSON.parse(data).user_id);
               $('#addPost').toggle();
               $('.addComment').toggle();
-              // $('.add-comment-container').toggle();
+              $('.add-comment-container').hide();
               // $('#add-post-container').css('display', 'block');
           },
           error: function (xhr, status) {
@@ -96,42 +96,6 @@ $( document ).ready(function() {
 
       // Ajax call for authentication
      console.log('this is where we will put code to log out?');
-
-      /* 
-
-      // Ajax called for authentication
-      var AUTH_TOKEN = $('meta[name="csrf-token"]').attr('content');
-      $.ajaxSetup({
-          beforeSend: function (xhr) {
-              xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-          }
-      });
-
-      $.ajax({
-          type: "DELETE",
-          url: "/logout?&authenticity_token=" + encodeURIComponent(AUTH_TOKEN),
-          data: {
-              // username: $('#usernameSU').val(),
-              // password: $('#passwordSU').val(),
-              // password_confirmation: $('#passwordSU').val()
-          },
-          dataType: "HTML",
-          success: function (data) {
-              console.log(data);
-              // $('#logout').toggle();
-              // $('#sessionCC').css("right", "-380px");
-              // $('#user_id').html(JSON.parse(data).user_id);
-              // $('#addPost').toggle();
-              // $('#add-post-container').css('display', 'block');
-          },
-          error: function (xhr, status) {
-              console.log(status);
-          }
-      });
-
-      return false;
-
-      */
 
   });
 
@@ -293,15 +257,24 @@ $(document).on('click', '.submitComment', function () {
     $('.commentCC[rel='+keepItRel+']').css("right", "-10px");
     // $('.hide-comments-vert-button').css("right", "370px");
   });
+  
   $(document).on('click', '.postBody', function() {
 
     var keepItRel = $(this).attr('rel');
     console.log($('.commentCC[rel='+keepItRel+']'));
+    
+    $('.commentCC[rel='+keepItRel+']').css("right", "-10px");
+    
 
+  });
+  $(document).on('click', '.commentBody', function() {
+
+    var keepItRel = $(this).attr('rel');
+    console.log($('.commentCC[rel='+keepItRel+']'));
+    $('.userCC').css("right", "-380px");
     $('.commentCC[rel='+keepItRel+']').css("right", "-10px");
     // $('.hide-comments-vert-button').css("right", "370px");
   });
-
   $(document).on('click', '#hide-comments-button', function() {
     $('.commentCC').css("right", "-380px");
     $('.add-comment-container').hide(); 
@@ -329,7 +302,7 @@ $(document).on('click', '.submitComment', function () {
     console.log($('.userCC[rel='+keepItRel+']'));
 
     $('.userCC[rel='+keepItRel+']').css("right", "-10px");
-
+    $('.commentCC').css("right", "-380px");
   });
 
   $(document).on('click', '#hide-user-button', function() {

@@ -22,7 +22,7 @@
   <% @userNotes.each do |n|%>
 
   <div class='commentContainer'>
-    <span class="commentBody"><%= n.description %></span>
+    <span rel='<%=n.id%>' class="commentBody"><%= n.description %></span>
     <div class="postMeta">
         <span class="date"><%= n.created_at.strftime("%m/%d/%Y")%>
     </span>
@@ -41,7 +41,7 @@
     <div class="post">        
       <span class="postBody-in-comments"><%= note.description %></span>     
       <div class="postMeta">
-        <span class="userName">@<%= note.username %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= note.created_at.strftime("%m/%d/%Y")%>
+        <span rel='<%="#{note.user_id}"%>' class="userName">@<%= note.username %></span>&nbsp;&nbsp; | &nbsp;&nbsp;<span class="date"><%= note.created_at.strftime("%m/%d/%Y")%>
       </div>    
     </div>
   </div>

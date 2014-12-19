@@ -157,11 +157,11 @@
 #logo{
   background-image: url('parasite_logo_final.svg');
   position: absolute;
-  top: 48px;
+  top: 39px;
   left: 20px;
   height: 70px;
   width: 200px;
-  background-size: 100px 38px;
+  background-size: 160px;
   background-repeat: no-repeat;
 }
 
@@ -230,8 +230,8 @@
 
 #addPost{
   position: absolute;
-  left: 130px;
-  top: 50px;
+  left: 190px;
+  top: 48px;
   width: 30px;
   height: 30px;
   border-radius: 60px;
@@ -562,6 +562,10 @@ color: rgba(0,0,0,.6);
   text-decoration: underline;
 }
 .commentBody{
+  font-size: 16px;
+  cursor: pointer;
+}
+.commentBody2{
   font-size: 16px;
 }
 .commentBody:hover{
