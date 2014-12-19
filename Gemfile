@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'high_voltage', '~> 2.2.1'
+
 gem 'better_errors'
 
 gem 'binding_of_caller'
