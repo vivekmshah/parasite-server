@@ -9,7 +9,7 @@ class NotesController < ApplicationController
     end
 
     @links = Note.find_by_sql([
-      'SELECT n.path, n.title, COUNT(*) AS count from notes as n INNER JOIN comments as c ON n.id=c.note_id WHERE n.domain = ? GROUP BY n.path ORDER BY 2 DESC LIMIT 5', params[:domain]
+      'SELECT n.path, n.title, COUNT(*) AS count from notes as n INNER JOIN comments as c ON n.id=c.note_id WHERE n.domain = ? GROUP BY n.path,n.title ORDER BY 2 DESC LIMIT 5', params[:domain]
       ])
 
   end
