@@ -181,7 +181,7 @@ $(document).on('click', '#submitPost', function () {
     return false;
 });
 
-// Ajax call for creating a post
+// Ajax call for creating a comment
 $(document).on('click', '.submitComment', function () {
 
     console.log('hello?');
@@ -207,7 +207,7 @@ $(document).on('click', '.submitComment', function () {
         success: function (data) {
             console.log(data);
 
-            // $('#postCC').prepend(data.info);
+            $('.commentHeader[rel='+keepItRel+']').after(data.info);
         },
         error: function (xhr, status) {
             console.log(status);
