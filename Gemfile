@@ -6,6 +6,8 @@ gem 'binding_of_caller'
 
 gem 'pg'
 
+gem 'nokogiri', '~> 1.6.5'
+
 gem 'json', '~> 1.8.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
