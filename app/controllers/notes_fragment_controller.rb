@@ -8,7 +8,7 @@ class NotesFragmentController < FragmentController
 
   def create
 
-    # require 'open-uri'
+    require 'open-uri'
 
     noko_url = 'http://' + params[:domain] + params[:path]    
     noko_title = Nokogiri::HTML(open(noko_url, "User-Agent" => "Ruby/#{RUBY_VERSION}")).xpath("//title")[0].children[0].content
