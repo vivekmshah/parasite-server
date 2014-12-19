@@ -70,6 +70,7 @@
     <% @links.each do |link|%>
       <div class="linkContainer">
         <span class="link"><%= link.title %></span>
+        <span class="link"><%= link.domain %></span>
         <span class="link"><%= link.path %></span>
         <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;<%= link.count %></span> 
       </div>
