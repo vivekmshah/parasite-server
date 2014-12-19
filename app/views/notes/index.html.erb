@@ -69,7 +69,7 @@
 
     <% @links.each do |link|%>
       <div class="linkContainer">
-        <span onclick="<%=link.domain%><%=link.path%>"class="link"><%= link.title %></span>
+        <span onclick="window.location.href='"<%=link.domain%><%=link.path%>"'"class="link"><%= link.title %></span>
         <span class="link"><%= link.path %></span>
         <span class="linkMeta">&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;<%= link.count %></span> 
       </div>
