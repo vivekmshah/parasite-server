@@ -171,6 +171,7 @@ $(document).on('click', '#submitPost', function () {
             domain: domain,
             path: path,
             user_id: $('#user_id').val(),
+            url: url,
             commit: "submit"
         },
         dataType: "JSON",
