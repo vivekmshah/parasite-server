@@ -214,7 +214,7 @@ $(document).on('click', '.submitComment', function () {
   });
 
   $(document).on('click', '#closePost', function() {
-    $('#postCC').css("margin-top", "90px");
+    $('#postCC').css("margin-top", "100px");
     $('#addPost').toggle();
     $('#add-post-container').toggle();
     $('#add-post-input').css("opacity", "0");
