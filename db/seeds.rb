@@ -1,1 +1,16 @@
-User.create(username: "harrypotter", password_digest: "harry")
+Note.create(description: "Web development immersive in Santa Monica is the best.", domain: "generalassemb.ly", path: "/education/web-development-immersive", user_id: User.last.id, title: "Web Development Courses - learn to write code in 12 weeks | General Assembly")
+Comment.create(description: "Learn the Rails framework, and cutting edge Javascript.", note_id: Note.last.id, user_id: User.last.id)
+Comment.create(description: "Helpful instructors and totally worth the experience.", note_id: Note.last.id, user_id: User.first.id)
+Comment.create(description: "Change the world through code.", note_id: Note.last.id, user_id: User.first.id)
+
+Note.create(description: "There should be a cruise to get all the cohorts together.", domain: "generalassemb.ly", path: "/education/web-development-immersive", user_id: User.first.id, title: "Web Development Courses - learn to write code in 12 weeks | General Assembly")
+Comment.create(description: "Lorin's got to lead the wolfpack :)", note_id: Note.last.id, user_id: User.last.id)
+Comment.create(description: "Let's party on code.", note_id: Note.last.id, user_id: User.first.id)
+Comment.create(description: "Write a test and make it fail. Write the implementation and make it awesome.", note_id: Note.last.id, user_id: User.last.id)
+
+Note.create(description: "This is where people love their life. People build stuff that comes from the soul.", domain: "generalassemb.ly  ", path: "/education/web-design-circuit", user_id: User.last.id, title: "Online Web Design Courses with Mentors | General Assembly") 
+Comment.create(description: "No problem in being a programmer. Own your code.", note_id: Note.last.id, user_id: User.last.id)
+Comment.create(description: "Always have a champagne bottle ready in case your code works.", note_id: Note.last.id, user_id: User.first.id)
+Comment.create(description: "Dream big, then scale it back. Make it manageable.", note_id: Note.last.id, user_id: User.last.id)
+Comment.create(description: "We're just a bunch of idiots trying to make our way in the world.", note_id: Note.last.id, user_id: User.first.id)
+Comment.create(description: "We are catering to the user. We are the user's BITCH.", note_id: Note.last.id, user_id: User.last.id)
