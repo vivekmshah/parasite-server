@@ -16,11 +16,13 @@ Rails.application.routes.draw do
   resources :notes, except: [:show, :create]
   resources :users
 
-  resources :comments
+  resources :comments, except: [:create]
 
   get 'notes/:id' => 'notes_fragment#show', as: :note_fragment
   post 'notes' => 'notes_fragment#create'
 
+  # get 'notes/:id' => 'notes_fragment#show', as: :note_fragment
+  post 'comments' => 'comments_fragment#create'
   # match '*any' => 'application#options', :via => [:options]
 
 end
